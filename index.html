@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>AMI Mobile — Анализ Авито</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 20px;
+      background: #111827; color: #f9fafb;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    h1 { font-size: 26px; }
+    .subtitle { color: #9ca3af; }
+    .card {
+      background: #1f2937; padding: 16px;
+      border-radius: 14px; margin: 14px 0;
+    }
+    input, select, button {
+      width: 100%; padding: 13px; margin: 7px 0;
+      border: 1px solid #4b5563; border-radius: 9px;
+      font-size: 16px;
+    }
+    input, select { background: #111827; color: white; }
+    button {
+      background: #2563eb; color: white;
+      border: 0; font-weight: 600;
+    }
+    .stat { font-size: 23px; font-weight: bold; }
+    .muted { color: #9ca3af; font-size: 13px; }
+    .profit { color: #4ade80; }
+    .item { border-top: 1px solid #374151; padding: 12px 0; }
+    .delete { background: #991b1b; }
+  </style>
+</head>
+<body>
+  <h1>AMI Mobile</h1>
+  <p class="subtitle">Анализ выгодных товаров на Авито</p>
+
+  <div class="card">
+    <div class="muted">Бюджет закупки</div>
+    <div class="stat">50 000 ₽</div>
+  </div>
+
+  <div class="card">
+    <div class="muted">Количество товаров</div>
+    <div class="stat" id="count">0</div>
+    <div class="muted">Потенциальная прибыль</div>
+    <div class="stat profit" id="total">0 ₽</div>
+  </div>
+
+  <div class="card">
+    <h3>Добавить объявление</h3>
+    <input id="name" placeholder="Название товара">
+    <select id="category">
+      <option>Электроника</option>
+      <option>Одежда</option>
+      <option>Обувь</option>
+      <option>Инструменты</option>
+      <option>Бытовая техника</option>
+      <option>Автотовары</option>
+      <option>Детские товары</option>
+      <option>Мебель</option>
+      <option>Другое</option>
+    </select>
+    <input id="buy" type="number" placeholder="Цена покупки, ₽">
+    <input id="sell" type="number" placeholder="Цена продажи, ₽">
+    <input id="cost" type="number" placeholder="Дополнительные расходы, ₽">
+    <input id="url" placeholder="Ссылка на объявление">
+    <button onclick="addItem()">Добавить товар</button>
+  </div>
+
+  <div class="card">
+    <h3>Мои объявления</h3>
+    <div id="items"></div>
+    <button onclick="exportCSV()">Экспорт CSV</button>
+  </div>
+
+<script>
+  let items = JSON.parse(localStorage.getItem("ami_items") || "[]");
+
+  function addItem() {
+    const name = document.getElementById("name").value.trim();
+    const buy = Number(document.getElementById("buy").value);
+    const sell = Number(document.getElementById("sell").value);
+    const cost = Number(document.getElementById("cost").value || 0);
+
+    if (!name || buy <= 0 || sell <= 0) {
+      alert("Заполни название и цены товара");
+      return;
+    }
+
+    items.push({
+      name,
+      category: document.getElementById("category").value,
+      buy, sell, cost,
+      url: document.getElementById("url").value,
+      date: new Date().toLocaleDateString("ru-RU")
+    });
+
+    save();
+    ["name","buy","sell","cost","url"].forEach(id => {
+      document.getElementById(id).value = "";
+    });
+  }
+
+  function removeItem(index) {
+    items.splice(index, 1);
+    save();
+  }
+
+  function save() {
+    localStorage.setItem("ami_items", JSON.stringify(items));
+    render();
+  }
+
+  function render() {
+    document.getElementById("count").textContent = items.length;
+    document.getElementById("total").textContent =
+      items.reduce((sum, x) => sum + x.sell - x.buy - x.cost, 0).toLocaleString("ru-RU") + " ₽";
+
+    document.getElementById("items").innerHTML = items.map((x, i) => `
+      <div class="item">
+        <strong>${escapeHTML(x.name)}</strong>
+        <div class="muted">${escapeHTML(x.category)} · ${x.date}</div>
+        Покупка: ${x.buy.toLocaleString("ru-RU")} ₽<br>
+        Продажа: ${x.sell.toLocaleString("ru-RU")} ₽<br>
+        <span class="profit">Прибыль: ${(x.sell-x.buy-x.cost).toLocaleString("ru-RU")} ₽</span>
+        <button class="delete" onclick="removeItem(${i})">Удалить</button>
+      </div>
+    `).join("");
+  }
+
+  function escapeHTML(s) {
+    return String(s).replace(/[&<>"']/g, c => ({
+      "&":"&amp;", "<":"&lt;", ">":"&gt;",
+      '"':"&quot;", "'":"&#39;"
+    })[c]);
+  }
+
+  function exportCSV() {
+    const rows = [["Название","Категория","Покупка","Продажа","Расходы","Прибыль"]];
+    items.forEach(x => rows.push([
+      x.name, x.category, x.buy, x.sell, x.cost, x.sell-x.buy-x.cost
+    ]));
+    const csv = "\uFEFF" + rows.map(r => r.join(";")).join("\n");
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([csv], {type:"text/csv;charset=utf-8"}));
+    a.download = "ami-mobile.csv";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  render();
+</script>
+</body>
+</html>
