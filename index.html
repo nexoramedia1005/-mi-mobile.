@@ -42,10 +42,17 @@
   <p class="subtitle">Анализ выгодных товаров на Авито</p>
 
   <div class="card">
-    <div class="muted">Бюджет закупки</div>
+    <div class="muted">Общий бюджет закупки</div>
     <div class="stat">50 000 ₽</div>
-  </div>
 
+    <div class="muted">Вложено в закупки</div>
+    <div class="stat" id="invested">0 ₽</div>
+
+    <div class="muted">Свободный бюджет</div>
+    <div class="stat" id="remaining">50 000 ₽</div>
+
+    <div class="muted" id="budgetWarning"></div>
+  </div>
   <div class="card">
     <div class="muted">Количество товаров</div>
     <div class="stat" id="count">0</div>
@@ -120,6 +127,25 @@
 
   function render() {
     document.getElementById("count").textContent = items.length;
+        const budget = 50000;
+
+    const invested = items.reduce(
+      (sum, x) => sum + Number(x.buy || 0), 0
+    );
+
+    const remaining = budget - invested;
+
+    document.getElementById("invested").textContent =
+      invested.toLocaleString("ru-RU") + " ₽";
+
+    document.getElementById("remaining").textContent =
+      remaining.toLocaleString("ru-RU") + " ₽";
+
+    document.getElementById("budgetWarning").textContent =
+      remaining < 0
+        ? "Внимание! Превышен бюджет на " +
+          Math.abs(remaining).toLocaleString("ru-RU") + " ₽"
+        : "";
     document.getElementById("total").textContent =
       items.reduce((sum, x) => sum + x.sell - x.buy - x.cost, 0).toLocaleString("ru-RU") + " ₽";
 
