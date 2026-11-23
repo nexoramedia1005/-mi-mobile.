@@ -83,10 +83,17 @@
 
   <div class="card">
     <h3>Мои объявления</h3>
+
+    <select id="filter" onchange="render()">
+      <option value="all">Все товары</option>
+      <option value="good">Перспективные</option>
+      <option value="check">Нужно проверить</option>
+      <option value="bad">Слабая экономика</option>
+    </select>
+
     <div id="items"></div>
     <button onclick="exportCSV()">Экспорт CSV</button>
   </div>
-
 <script>
   let items = JSON.parse(localStorage.getItem("ami_items") || "[]");
 
@@ -115,7 +122,22 @@
     });
   }
 
-  function removeItem(index) {
+  function getRating(x) {
+  const profit = x.sell - x.buy - x.cost;
+  const roi = profit / x.buy;
+
+  if (profit >= 3000 && roi >= 0.2) return "good";
+  if (profit > 0 && roi >= 0.1) return "check";
+  return "bad";
+}
+
+function getRatingText(x) {
+  const rating = getRating(x);
+
+  if (rating === "good") return "Перспективный";
+  if (rating === "check") return "Нужно проверить";
+  return "Слабая экономика";
+}function removeItem(index) {
     items.splice(index, 1);
     save();
   }
@@ -149,24 +171,26 @@
     document.getElementById("total").textContent =
       items.reduce((sum, x) => sum + x.sell - x.buy - x.cost, 0).toLocaleString("ru-RU") + " ₽";
 
-    document.getElementById("items").innerHTML = items.map((x, i) => `
+        const filter = document.getElementById("filter").value;
+
+    const filteredItems = items
+      .map((x, index) => ({...x, originalIndex: index}))
+      .filter(x => filter === "all" || getRating(x) === filter);
+
+    document.getElementById("items").innerHTML = filteredItems.length
+      ? filteredItems.map(x => `
       <div class="item">
         <strong>${escapeHTML(x.name)}</strong>
         <div class="muted">${escapeHTML(x.category)} · ${x.date}</div>
         Покупка: ${x.buy.toLocaleString("ru-RU")} ₽<br>
         Продажа: ${x.sell.toLocaleString("ru-RU")} ₽<br>
         <span class="profit">Прибыль: ${(x.sell-x.buy-x.cost).toLocaleString("ru-RU")} ₽</span>
-<div>ROI: ${((x.sell-x.buy-x.cost)/x.buy*100).toFixed(1)}%</div>
-<div>Оценка: ${
-  (x.sell-x.buy-x.cost >= 3000 && (x.sell-x.buy-x.cost)/x.buy >= 0.2)
-  ? "Перспективный"
-  : (x.sell-x.buy-x.cost > 0 && (x.sell-x.buy-x.cost)/x.buy >= 0.1)
-  ? "Нужно проверить"
-  : "Слабая экономика"
-}</div>
-        <button class="delete" onclick="removeItem(${i})">Удалить</button>
+        <div>ROI: ${((x.sell-x.buy-x.cost)/x.buy*100).toFixed(1)}%</div>
+        <div>Оценка: ${getRatingText(x)}</div>
+        <button class="delete" onclick="removeItem(${x.originalIndex})">Удалить</button>
       </div>
-    `).join("");
+    `).join("")
+      : "<p class='muted'>В этой категории пока нет товаров.</p>";
   }
 
   function escapeHTML(s) {
