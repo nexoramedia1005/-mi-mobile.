@@ -9,8 +9,8 @@
 <title>AMI Mobile — Анализ Авито</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;padding:16px;background:#111827;color:#f9fafb;font-family:Arial,sans-serif}
-h1{font-size:26px}
+body{margin:0;padding:15px;background:#111827;color:#f9fafb;font-family:Arial,sans-serif}
+h1{font-size:27px;margin-bottom:5px}
 h3{margin-top:0}
 .subtitle,.muted{color:#9ca3af}
 .muted{font-size:13px}
@@ -18,6 +18,7 @@ h3{margin-top:0}
 input,select,button{width:100%;padding:13px;margin:7px 0;border:1px solid #4b5563;border-radius:9px;font-size:16px}
 input,select{background:#111827;color:white}
 button{background:#2563eb;color:white;border:0;font-weight:bold;cursor:pointer}
+button:disabled{opacity:.5}
 .stat{font-size:23px;font-weight:bold;margin:5px 0 12px}
 .profit,.good{color:#4ade80}
 .check{color:#facc15}
@@ -26,19 +27,22 @@ button{background:#2563eb;color:white;border:0;font-weight:bold;cursor:pointer}
 .delete{background:#991b1b}
 .secondary{background:#374151}
 .market-result{background:#111827;border-radius:9px;padding:12px;margin-top:10px}
+.ad{background:#111827;border-radius:10px;padding:12px;margin:10px 0}
 a{color:#60a5fa;overflow-wrap:anywhere}
 hr{border:0;border-top:1px solid #374151;margin:12px 0}
+.status-line{font-size:13px;margin:8px 0}
+.pill{display:inline-block;background:#374151;padding:5px 9px;border-radius:20px;font-size:12px;margin:3px 0}
 </style>
 </head>
 <body>
 
 <h1>AMI Mobile</h1>
-<p class="subtitle">Интеллектуальный помощник по перепродаже на Авито</p>
+<p class="subtitle">Автоматический анализ товаров для перепродажи</p>
 
 <div class="card">
 <h3>Финансы и бюджет</h3>
 <div class="muted">Общий бюджет, ₽</div>
-<input id="budgetInput" type="number" min="0" step="1000" placeholder="Например, 100000">
+<input id="budgetInput" type="number" min="0" step="1000">
 <button onclick="updateBudget()">Сохранить бюджет</button>
 <div class="muted">Текущий бюджет</div>
 <div class="stat" id="budgetDisplay">50 000 ₽</div>
@@ -51,14 +55,35 @@ hr{border:0;border-top:1px solid #374151;margin:12px 0}
 </div>
 
 <div class="card">
-<div class="muted">Всего товаров в анализе</div>
+<h3>Показатели AMI</h3>
+<div class="muted">Товаров в анализе</div>
 <div class="stat" id="count">0</div>
-<div class="muted">Уже куплено товаров</div>
+<div class="muted">Куплено товаров</div>
 <div class="stat" id="boughtCount">0</div>
 <div class="muted">Расчётная прибыль по всем товарам</div>
 <div class="stat profit" id="total">0 ₽</div>
 <div class="muted">Расчётная прибыль по купленным товарам</div>
 <div class="stat profit" id="boughtProfit">0 ₽</div>
+</div>
+
+<div class="card">
+<h3>Автоматический поиск Авито</h3>
+<div class="status-line" id="avitoStatus">Проверяем подключение к базе...</div>
+<div class="muted">Последнее обновление базы</div>
+<div id="avitoDate">—</div>
+<div class="muted">Найдено объявлений</div>
+<div class="stat" id="avitoCount">0</div>
+<button onclick="loadAvito(true)" id="refreshButton">Обновить объявления</button>
+<p class="muted">Данные загружаются из автоматической базы AMI на GitHub. Обновление базы выполняется через GitHub Actions.</p>
+<hr>
+<h3>Объявления из Авито</h3>
+<input id="avitoSearch" placeholder="Поиск по названию" oninput="renderAvito()">
+<select id="avitoSort" onchange="renderAvito()">
+<option value="newest">Сначала новые в базе</option>
+<option value="cheap">Сначала дешёвые</option>
+<option value="expensive">Сначала дорогие</option>
+</select>
+<div id="avitoListings"></div>
 </div>
 
 <div class="card">
@@ -91,8 +116,8 @@ hr{border:0;border-top:1px solid #374151;margin:12px 0}
 </div>
 
 <div class="card">
-<h3>База рыночных объявлений</h3>
-<p class="muted">Добавляй цены конкурентов с Авито. Сравнивай одинаковые модели, комплектации и состояние.</p>
+<h3>База рыночных аналогов</h3>
+<p class="muted">Добавляй объявления с такой же моделью, комплектацией и состоянием. AMI рассчитает медианную цену.</p>
 <input id="marketName" placeholder="Название и точная модель">
 <input id="marketPrice" type="number" min="1" placeholder="Цена объявления, ₽">
 <select id="marketCondition">
@@ -100,7 +125,7 @@ hr{border:0;border-top:1px solid #374151;margin:12px 0}
 <option value="Новое">Новое</option>
 </select>
 <input id="marketUrl" placeholder="Ссылка на объявление">
-<button onclick="addMarketItem()">Добавить конкурента</button>
+<button onclick="addMarketItem()">Добавить аналог</button>
 <div id="marketItems"></div>
 </div>
 
@@ -114,7 +139,7 @@ hr{border:0;border-top:1px solid #374151;margin:12px 0}
 </select>
 <div id="items"></div>
 <button onclick="exportCSV()">Экспорт товаров CSV</button>
-<button onclick="exportBackup()">Резервная копия всех данных JSON</button>
+<button onclick="exportBackup()">Резервная копия JSON</button>
 <button onclick="document.getElementById('importFile').click()">Восстановить данные JSON</button>
 <input id="importFile" type="file" accept=".json,application/json" style="display:none" onchange="importBackup(event)">
 </div>
@@ -126,6 +151,7 @@ const DEFAULT_BUDGET = 50000;
 const MIN_PROFIT = 3000;
 const MIN_ROI = 0.20;
 const MIN_ANALOGUES = 3;
+const AVITO_URL = "./data/avito-results.json";
 
 function loadArray(key) {
   try {
@@ -137,18 +163,23 @@ function loadArray(key) {
 }
 
 function loadBudget() {
-  const value = Number(localStorage.getItem("ami_budget"));
-  return localStorage.getItem("ami_budget") !== null &&
-    Number.isFinite(value) && value >= 0
+  const raw = localStorage.getItem("ami_budget");
+  const value = Number(raw);
+  return raw !== null && Number.isFinite(value) && value >= 0
     ? value : DEFAULT_BUDGET;
 }
 
 let BUDGET = loadBudget();
+
 let items = loadArray("ami_items").map(x => ({
   ...x,
   status: x.status === "Куплен" ? "Куплен" : "Рассматриваю"
 }));
+
 let marketItems = loadArray("ami_market");
+let avitoListings = [];
+let avitoGeneratedAt = "";
+let avitoLoading = false;
 
 function money(value) {
   return Math.round(Number(value) || 0).toLocaleString("ru-RU") + " ₽";
@@ -195,12 +226,12 @@ function updateBudget() {
   }
   const value = Number(field.value);
   if (!Number.isFinite(value) || value < 0) {
-    alert("Бюджет должен быть нулём или положительной суммой.");
+    alert("Введи корректный бюджет.");
     return;
   }
   BUDGET = Math.round(value);
   save();
-  alert("Новый бюджет сохранён: " + money(BUDGET));
+  alert("Бюджет сохранён: " + money(BUDGET));
 }
 
 function addItem() {
@@ -212,25 +243,26 @@ function addItem() {
 
   if (!name || !Number.isFinite(buy) || !Number.isFinite(sell) ||
       !Number.isFinite(cost) || buy <= 0 || sell <= 0 || cost < 0) {
-    alert("Проверь название и цены. Закупка и продажа должны быть больше нуля.");
+    alert("Проверь название и цены.");
     return;
   }
+
   if (urlInput && !safeUrl(urlInput)) {
     alert("Ссылка должна начинаться с http:// или https://");
     return;
   }
 
   const status = document.getElementById("status").value;
+
   if (status === "Куплен" && buy > BUDGET - getInvested()) {
-    if (!confirm("Покупка превышает свободный бюджет. Всё равно отметить товар как купленный?")) return;
+    if (!confirm("Покупка превышает свободный бюджет. Продолжить?")) return;
   }
 
   items.push({
     name,
     category: document.getElementById("category").value,
     condition: document.getElementById("condition").value,
-    buy, sell, cost,
-    status,
+    buy, sell, cost, status,
     url: urlInput,
     date: new Date().toLocaleDateString("ru-RU")
   });
@@ -238,6 +270,7 @@ function addItem() {
   ["name","buy","sell","cost","url"].forEach(id => {
     document.getElementById(id).value = "";
   });
+
   document.getElementById("status").value = "Рассматриваю";
   save();
 }
@@ -248,11 +281,12 @@ function addMarketItem() {
   const urlInput = document.getElementById("marketUrl").value.trim();
 
   if (!name || !Number.isFinite(price) || price <= 0) {
-    alert("Введи название товара и положительную цену.");
+    alert("Введи название и положительную цену.");
     return;
   }
+
   if (urlInput && !safeUrl(urlInput)) {
-    alert("Ссылка должна начинаться с http:// или https://");
+    alert("Проверь ссылку.");
     return;
   }
 
@@ -267,7 +301,49 @@ function addMarketItem() {
   ["marketName","marketPrice","marketUrl"].forEach(id => {
     document.getElementById(id).value = "";
   });
+
   save();
+}
+
+function addAvitoToMarket(index) {
+  const listing = avitoListings[index];
+  if (!listing) return;
+
+  const conditionField = document.getElementById("avitoCondition" + index);
+  const condition = conditionField ? conditionField.value : "Не указано";
+
+  if (condition === "Не указано") {
+    alert("Сначала укажи состояние товара: Б/у или Новое.");
+    return;
+  }
+
+  const title = String(listing.title || "").trim();
+  const price = Number(listing.price);
+  const url = safeUrl(listing.url || listing.link || listing.avito_url);
+
+  if (!title || !Number.isFinite(price) || price <= 0) {
+    alert("В объявлении нет корректного названия или цены.");
+    return;
+  }
+
+  const listingId = String(listing.id || url || title + price);
+
+  if (marketItems.some(x => x.sourceId === listingId)) {
+    alert("Это объявление уже добавлено в базу аналогов.");
+    return;
+  }
+
+  marketItems.push({
+    name: title,
+    price,
+    condition,
+    url,
+    sourceId: listingId,
+    date: new Date().toLocaleDateString("ru-RU")
+  });
+
+  save();
+  alert("Объявление добавлено в базу аналогов.");
 }
 
 function getInvested() {
@@ -278,14 +354,17 @@ function getInvested() {
 
 function setItemStatus(index, value) {
   if (!items[index]) return;
+
   if (value === "Куплен" && items[index].status !== "Куплен") {
     const available = BUDGET - getInvested();
+
     if (Number(items[index].buy) > available &&
         !confirm("Цена покупки превышает свободный бюджет. Продолжить?")) {
       render();
       return;
     }
   }
+
   items[index].status = value;
   save();
 }
@@ -297,7 +376,7 @@ function removeItem(index) {
 }
 
 function removeMarketItem(index) {
-  if (!confirm("Удалить это объявление из базы конкурентов?")) return;
+  if (!confirm("Удалить аналог из базы?")) return;
   marketItems.splice(index, 1);
   save();
 }
@@ -308,10 +387,12 @@ function getMarketStats(name, condition) {
     x.condition === condition &&
     Number(x.price) > 0
   );
+
   if (!matches.length) return null;
 
   const prices = matches.map(x => Number(x.price)).sort((a,b) => a-b);
   const mid = Math.floor(prices.length / 2);
+
   const median = prices.length % 2
     ? prices[mid]
     : (prices[mid-1] + prices[mid]) / 2;
@@ -327,6 +408,7 @@ function getMarketStats(name, condition) {
 function getRating(x) {
   const profit = Number(x.sell) - Number(x.buy) - Number(x.cost || 0);
   const roi = Number(x.buy) > 0 ? profit / Number(x.buy) : 0;
+
   if (profit >= MIN_PROFIT && roi >= MIN_ROI) return "good";
   if (profit > 0 && roi >= 0.10) return "check";
   return "bad";
@@ -346,9 +428,11 @@ function getMarketAdvice(x) {
   const suggestedSell = Math.round(stats.median * 0.95);
   const cost = Number(x.cost || 0);
   const buy = Number(x.buy);
+
   const maxByROI = (suggestedSell - cost) / (1 + MIN_ROI);
   const maxByProfit = suggestedSell - cost - MIN_PROFIT;
   const maxBuy = Math.max(0, Math.floor(Math.min(maxByROI, maxByProfit)));
+
   const profit = suggestedSell - buy - cost;
   const roi = buy > 0 ? profit / buy : 0;
 
@@ -360,7 +444,7 @@ function getMarketAdvice(x) {
     text = "НЕДОСТАТОЧНО АНАЛОГОВ";
   } else if (maxBuy > 0 && buy <= maxBuy) {
     status = "good";
-    text = "ПОКУПАТЬ — ПО ЭКОНОМИКЕ";
+    text = "ПОКУПАТЬ — ПО РАСЧЁТУ";
   } else if (profit > 0 && roi >= 0.10) {
     status = "check";
     text = "ПРОВЕРИТЬ / ТОРГОВАТЬСЯ";
@@ -369,11 +453,133 @@ function getMarketAdvice(x) {
   return {stats,suggestedSell,maxBuy,profit,roi,status,text};
 }
 
+async function loadAvito(showMessage = false) {
+  if (avitoLoading) return;
+
+  avitoLoading = true;
+  const button = document.getElementById("refreshButton");
+  const status = document.getElementById("avitoStatus");
+
+  button.disabled = true;
+  button.textContent = "Загружаю...";
+  status.textContent = "Подключение к базе AMI...";
+
+  try {
+    const response = await fetch(AVITO_URL + "?t=" + Date.now(), {
+      cache: "no-store"
+    });
+
+    if (!response.ok) {
+      throw new Error("HTTP " + response.status);
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data.listings)) {
+      throw new Error("Неверный формат базы объявлений");
+    }
+
+    avitoListings = data.listings.filter(x =>
+      x && typeof x.title === "string" &&
+      Number(x.price) > 0
+    );
+
+    // Убираем повторные объявления.
+    const unique = new Map();
+
+    avitoListings.forEach(x => {
+      const key = String(
+        x.id || x.url || x.link ||
+        (x.title + "_" + x.price)
+      );
+
+      if (!unique.has(key)) unique.set(key, x);
+    });
+
+    avitoListings = Array.from(unique.values());
+    avitoGeneratedAt = data.generated_at || "";
+
+    document.getElementById("avitoCount").textContent =
+      avitoListings.length;
+
+    document.getElementById("avitoDate").textContent =
+      avitoGeneratedAt
+        ? new Date(avitoGeneratedAt).toLocaleString("ru-RU")
+        : "Дата не указана";
+
+    status.innerHTML =
+      '<span class="good">Подключено. База загружена.</span>';
+
+    renderAvito();
+
+    if (showMessage) {
+      alert("База обновлена. Загружено объявлений: " + avitoListings.length);
+    }
+
+  } catch (error) {
+    status.innerHTML =
+      '<span class="bad">Не удалось загрузить базу: ' +
+      escapeHTML(error.message) + '</span>';
+
+    if (showMessage) {
+      alert("Не удалось загрузить объявления. Проверь GitHub Pages и файл базы.");
+    }
+  } finally {
+    avitoLoading = false;
+    button.disabled = false;
+    button.textContent = "Обновить объявления";
+  }
+}
+
+function renderAvito() {
+  const container = document.getElementById("avitoListings");
+  const search = normalizeName(document.getElementById("avitoSearch").value);
+  const sort = document.getElementById("avitoSort").value;
+
+  let list = avitoListings
+    .map((x,index) => ({...x, originalIndex:index}))
+    .filter(x => normalizeName(x.title).includes(search));
+
+  if (sort === "cheap") {
+    list.sort((a,b) => Number(a.price) - Number(b.price));
+  } else if (sort === "expensive") {
+    list.sort((a,b) => Number(b.price) - Number(a.price));
+  }
+
+  if (!list.length) {
+    container.innerHTML =
+      '<p class="muted">Объявления не найдены. Проверь поисковый запрос или обнови базу.</p>';
+    return;
+  }
+
+  container.innerHTML = list.map(x => {
+    const url = safeUrl(x.url || x.link || x.avito_url);
+    const index = x.originalIndex;
+
+    return `
+      <div class="ad">
+        <strong>${escapeHTML(x.title)}</strong>
+        <div class="stat">${money(x.price)}</div>
+        <span class="pill">Источник: Авито</span>
+        ${url ? `<p><a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">Открыть объявление на Авито</a></p>` : ""}
+        <label class="muted">Состояние товара перед переносом в аналоги:</label>
+        <select id="avitoCondition${index}">
+          <option value="Не указано">Не указано</option>
+          <option value="Б/у">Б/у</option>
+          <option value="Новое">Новое</option>
+        </select>
+        <button class="secondary" onclick="addAvitoToMarket(${index})">Добавить в базу аналогов</button>
+      </div>`;
+  }).join("");
+}
+
 function renderMarket() {
   const container = document.getElementById("marketItems");
+
   container.innerHTML = marketItems.length
     ? marketItems.map((x,index) => {
         const url = safeUrl(x.url);
+
         return `
           <div class="item">
             <strong>${escapeHTML(x.name)}</strong>
@@ -383,11 +589,12 @@ function renderMarket() {
             <button class="delete" onclick="removeMarketItem(${index})">Удалить аналог</button>
           </div>`;
       }).join("")
-    : '<p class="muted">Объявления конкурентов пока не добавлены.</p>';
+    : '<p class="muted">Аналоги пока не добавлены.</p>';
 }
 
 function renderItems() {
   const filter = document.getElementById("filter").value;
+
   const filtered = items
     .map((x,index) => ({...x, originalIndex:index}))
     .filter(x => filter === "all" || getRating(x) === filter);
@@ -406,8 +613,8 @@ function renderItems() {
             <div class="muted">${escapeHTML(x.category || "")} · ${escapeHTML(x.condition || "Б/у")} · ${escapeHTML(x.date || "")}</div>
             <p><strong>Статус товара</strong></p>
             <select onchange="setItemStatus(${x.originalIndex},this.value)">
-              <option value="Рассматриваю" ${status === "Рассматриваю" ? "selected" : ""}>Рассматриваю — ещё не куплен</option>
-              <option value="Куплен" ${status === "Куплен" ? "selected" : ""}>Куплен — деньги вложены</option>
+              <option value="Рассматриваю" ${status === "Рассматриваю" ? "selected" : ""}>Рассматриваю</option>
+              <option value="Куплен" ${status === "Куплен" ? "selected" : ""}>Куплен</option>
             </select>
             Покупка: ${money(x.buy)}<br>
             План продажи: ${money(x.sell)}<br>
@@ -429,27 +636,30 @@ function renderItems() {
                 <div>ROI при текущей закупке: ${(advice.roi*100).toFixed(1)}%</div>
                 <p class="${advice.status}"><strong>${advice.text}</strong></p>
                 ${advice.stats.count < MIN_ANALOGUES
-                  ? '<p class="muted">Для уверенной рекомендации нужны минимум 3 сопоставимых объявления.</p>'
+                  ? '<p class="muted">Для рекомендации нужны минимум 3 аналога.</p>'
                   : '<p class="muted">Расчёт основан на ценах объявлений, а не на подтверждённых продажах.</p>'}
               </div>
             ` : `
               <div class="market-result muted">
-                Аналоги не найдены. Добавь объявления с точно таким же названием и состоянием.
+                Аналоги не найдены. Добавь объявления с точно такой же моделью и состоянием.
               </div>
             `}
             ${url ? `<a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">Открыть исходное объявление</a>` : ""}
             <button class="delete" onclick="removeItem(${x.originalIndex})">Удалить товар</button>
           </div>`;
       }).join("")
-    : '<p class="muted">Товаров в этой категории пока нет.</p>';
+    : '<p class="muted">Товаров пока нет.</p>';
 }
 
 function render() {
   const invested = getInvested();
   const remaining = BUDGET - invested;
+
   const total = items.reduce((sum,x) =>
     sum + Number(x.sell || 0) - Number(x.buy || 0) - Number(x.cost || 0), 0);
+
   const bought = items.filter(x => x.status === "Куплен");
+
   const boughtProfit = bought.reduce((sum,x) =>
     sum + Number(x.sell || 0) - Number(x.buy || 0) - Number(x.cost || 0), 0);
 
@@ -461,6 +671,7 @@ function render() {
   document.getElementById("remaining").textContent = money(remaining);
   document.getElementById("total").textContent = money(total);
   document.getElementById("boughtProfit").textContent = money(boughtProfit);
+
   document.getElementById("budgetWarning").textContent =
     remaining < 0 ? "Бюджет превышен на " + money(Math.abs(remaining)) : "";
 
@@ -470,20 +681,24 @@ function render() {
 
 function exportCSV() {
   const rows = [[
-    "Название","Категория","Состояние","Статус","Покупка",
-    "Продажа","Расходы","Прибыль","ROI"
+    "Название","Категория","Состояние","Статус",
+    "Покупка","Продажа","Расходы","Прибыль","ROI"
   ]];
+
   items.forEach(x => {
     const profit = Number(x.sell)-Number(x.buy)-Number(x.cost || 0);
     const roi = Number(x.buy) > 0 ? profit/Number(x.buy)*100 : 0;
+
     rows.push([
       x.name,x.category,x.condition || "Б/у",x.status || "Рассматриваю",
       x.buy,x.sell,x.cost || 0,profit,roi.toFixed(1)+"%"
     ]);
   });
+
   const csv = "\uFEFF" + rows.map(row =>
     row.map(v => '"' + String(v ?? "").replace(/"/g,'""') + '"').join(";")
   ).join("\r\n");
+
   const blob = new Blob([csv],{type:"text/csv;charset=utf-8"});
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
@@ -495,12 +710,13 @@ function exportCSV() {
 
 function exportBackup() {
   const data = {
-    version: 2,
+    version: 3,
     exportedAt: new Date().toISOString(),
     budget: BUDGET,
     items,
     marketItems
   };
+
   const blob = new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
@@ -513,37 +729,46 @@ function exportBackup() {
 function importBackup(event) {
   const file = event.target.files[0];
   if (!file) return;
+
   const reader = new FileReader();
+
   reader.onload = () => {
     try {
       const data = JSON.parse(reader.result);
+
       if (!Array.isArray(data.items) || !Array.isArray(data.marketItems)) {
-        throw new Error("Неверный формат резервной копии");
+        throw new Error("Неверный формат");
       }
+
       if (!confirm("Заменить текущие товары, аналоги и бюджет данными из файла?")) return;
+
       items = data.items.map(x => ({
         ...x,
         status: x.status === "Куплен" ? "Куплен" : "Рассматриваю"
       }));
+
       marketItems = data.marketItems;
+
       if (Number.isFinite(Number(data.budget)) && Number(data.budget) >= 0) {
         BUDGET = Number(data.budget);
       }
+
       save();
       alert("Данные восстановлены.");
+
     } catch {
       alert("Не удалось прочитать резервную копию.");
     } finally {
       event.target.value = "";
     }
   };
+
   reader.readAsText(file);
 }
 
 render();
-</script>
+loadAvito(false);
 
-<script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./sw.js").catch(error => {
