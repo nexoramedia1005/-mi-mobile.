@@ -10,14 +10,7 @@
   <style>
     * { box-sizing: border-box; }
     body {
-      <script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js");
-  });
-}
-</script>
-      margin: 0; padding: 20px;
+           margin: 0; padding: 20px;
       background: #111827; color: #f9fafb;
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
@@ -164,5 +157,11 @@ if ("serviceWorker" in navigator) {
 
   render();
 </script>
-</body>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js");
+  });
+}
+</script></body>
 </html>
