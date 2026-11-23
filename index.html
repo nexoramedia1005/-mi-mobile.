@@ -130,6 +130,14 @@
         Покупка: ${x.buy.toLocaleString("ru-RU")} ₽<br>
         Продажа: ${x.sell.toLocaleString("ru-RU")} ₽<br>
         <span class="profit">Прибыль: ${(x.sell-x.buy-x.cost).toLocaleString("ru-RU")} ₽</span>
+<div>ROI: ${((x.sell-x.buy-x.cost)/x.buy*100).toFixed(1)}%</div>
+<div>Оценка: ${
+  (x.sell-x.buy-x.cost >= 3000 && (x.sell-x.buy-x.cost)/x.buy >= 0.2)
+  ? "Перспективный"
+  : (x.sell-x.buy-x.cost > 0 && (x.sell-x.buy-x.cost)/x.buy >= 0.1)
+  ? "Нужно проверить"
+  : "Слабая экономика"
+}</div>
         <button class="delete" onclick="removeItem(${i})">Удалить</button>
       </div>
     `).join("");
