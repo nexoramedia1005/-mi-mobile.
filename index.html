@@ -10,12 +10,13 @@
   <style>
     * { box-sizing: border-box; }
     body {
-           margin: 0; padding: 20px;
+      margin: 0; padding: 20px;
       background: #111827; color: #f9fafb;
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
     h1 { font-size: 26px; }
-    .subtitle { color: #9ca3af; }
+    .subtitle, .muted { color: #9ca3af; }
+    .muted { font-size: 13px; }
     .card {
       background: #1f2937; padding: 16px;
       border-radius: 14px; margin: 14px 0;
@@ -28,13 +29,20 @@
     input, select { background: #111827; color: white; }
     button {
       background: #2563eb; color: white;
-      border: 0; font-weight: 600;
+      border: 0; font-weight: 600; cursor: pointer;
     }
     .stat { font-size: 23px; font-weight: bold; }
-    .muted { color: #9ca3af; font-size: 13px; }
     .profit { color: #4ade80; }
     .item { border-top: 1px solid #374151; padding: 12px 0; }
     .delete { background: #991b1b; }
+    .good { color: #4ade80; font-weight: bold; }
+    .check { color: #facc15; font-weight: bold; }
+    .bad { color: #f87171; font-weight: bold; }
+    .market-result {
+      background: #111827; border-radius: 9px;
+      padding: 12px; margin-top: 10px;
+    }
+    a { color: #60a5fa; overflow-wrap: anywhere; }
   </style>
 </head>
 <body>
@@ -44,25 +52,23 @@
   <div class="card">
     <div class="muted">Общий бюджет закупки</div>
     <div class="stat">50 000 ₽</div>
-
     <div class="muted">Вложено в закупки</div>
     <div class="stat" id="invested">0 ₽</div>
-
     <div class="muted">Свободный бюджет</div>
     <div class="stat" id="remaining">50 000 ₽</div>
-
     <div class="muted" id="budgetWarning"></div>
   </div>
+
   <div class="card">
     <div class="muted">Количество товаров</div>
     <div class="stat" id="count">0</div>
-    <div class="muted">Потенциальная прибыль</div>
+    <div class="muted">Потенциальная прибыль по введённым ценам</div>
     <div class="stat profit" id="total">0 ₽</div>
   </div>
 
   <div class="card">
-    <h3>Добавить объявление</h3>
-    <input id="name" placeholder="Название товара">
+    <h3>Добавить товар для перепродажи</h3>
+    <input id="name" placeholder="Название и модель товара">
     <select id="category">
       <option>Электроника</option>
       <option>Одежда</option>
@@ -74,28 +80,59 @@
       <option>Мебель</option>
       <option>Другое</option>
     </select>
-    <input id="buy" type="number" placeholder="Цена покупки, ₽">
-    <input id="sell" type="number" placeholder="Цена продажи, ₽">
-    <input id="cost" type="number" placeholder="Дополнительные расходы, ₽">
+    <input id="buy" type="number" min="1" placeholder="Цена покупки, ₽">
+    <input id="sell" type="number" min="1" placeholder="Планируемая цена продажи, ₽">
+    <input id="cost" type="number" min="0" placeholder="Дополнительные расходы, ₽">
     <input id="url" placeholder="Ссылка на объявление">
     <button onclick="addItem()">Добавить товар</button>
   </div>
 
   <div class="card">
-    <h3>Мои объявления</h3>
+    <h3>Анализ рынка конкурентов</h3>
+    <p class="muted">
+      Добавляй цены аналогичных товаров с Авито.
+      Для точного сравнения используй одинаковые модели и состояние.
+    </p>
+    <input id="marketName" placeholder="Название и модель товара">
+    <input id="marketPrice" type="number" min="1" placeholder="Цена конкурента, ₽">
+    <select id="marketCondition">
+      <option value="Б/у">Б/у</option>
+      <option value="Новое">Новое</option>
+    </select>
+    <input id="marketUrl" placeholder="Ссылка на объявление конкурента">
+    <button onclick="addMarketItem()">Добавить цену конкурента</button>
+    <div id="marketItems"></div>
+  </div>
 
+  <div class="card">
+    <h3>Мои товары и рекомендации AMI</h3>
     <select id="filter" onchange="render()">
       <option value="all">Все товары</option>
       <option value="good">Перспективные</option>
       <option value="check">Нужно проверить</option>
       <option value="bad">Слабая экономика</option>
     </select>
-
     <div id="items"></div>
     <button onclick="exportCSV()">Экспорт CSV</button>
   </div>
+
 <script>
   let items = JSON.parse(localStorage.getItem("ami_items") || "[]");
+  let marketItems = JSON.parse(localStorage.getItem("ami_market") || "[]");
+
+  function money(value) {
+    return Math.round(value).toLocaleString("ru-RU") + " ₽";
+  }
+
+  function normalizeName(value) {
+    return String(value || "").trim().toLowerCase().replace(/\s+/g, " ");
+  }
+
+  function save() {
+    localStorage.setItem("ami_items", JSON.stringify(items));
+    localStorage.setItem("ami_market", JSON.stringify(marketItems));
+    render();
+  }
 
   function addItem() {
     const name = document.getElementById("name").value.trim();
@@ -103,8 +140,8 @@
     const sell = Number(document.getElementById("sell").value);
     const cost = Number(document.getElementById("cost").value || 0);
 
-    if (!name || buy <= 0 || sell <= 0) {
-      alert("Заполни название и цены товара");
+    if (!name || buy <= 0 || sell <= 0 || cost < 0) {
+      alert("Проверь название и цены товара.");
       return;
     }
 
@@ -112,84 +149,186 @@
       name,
       category: document.getElementById("category").value,
       buy, sell, cost,
-      url: document.getElementById("url").value,
+      url: document.getElementById("url").value.trim(),
       date: new Date().toLocaleDateString("ru-RU")
     });
 
-    save();
-    ["name","buy","sell","cost","url"].forEach(id => {
+    ["name", "buy", "sell", "cost", "url"].forEach(id => {
       document.getElementById(id).value = "";
     });
+    save();
   }
 
-  function getRating(x) {
-  const profit = x.sell - x.buy - x.cost;
-  const roi = profit / x.buy;
+  function addMarketItem() {
+    const name = document.getElementById("marketName").value.trim();
+    const price = Number(document.getElementById("marketPrice").value);
 
-  if (profit >= 3000 && roi >= 0.2) return "good";
-  if (profit > 0 && roi >= 0.1) return "check";
-  return "bad";
-}
+    if (!name || price <= 0) {
+      alert("Введи название товара и цену конкурента.");
+      return;
+    }
 
-function getRatingText(x) {
-  const rating = getRating(x);
+    marketItems.push({
+      name,
+      price,
+      condition: document.getElementById("marketCondition").value,
+      url: document.getElementById("marketUrl").value.trim(),
+      date: new Date().toLocaleDateString("ru-RU")
+    });
 
-  if (rating === "good") return "Перспективный";
-  if (rating === "check") return "Нужно проверить";
-  return "Слабая экономика";
-}function removeItem(index) {
+    ["marketName", "marketPrice", "marketUrl"].forEach(id => {
+      document.getElementById(id).value = "";
+    });
+    save();
+  }
+
+  function removeItem(index) {
     items.splice(index, 1);
     save();
   }
 
-  function save() {
-    localStorage.setItem("ami_items", JSON.stringify(items));
-    render();
+  function removeMarketItem(index) {
+    marketItems.splice(index, 1);
+    save();
+  }
+
+  function getMarketStats(name, condition) {
+    const matches = marketItems.filter(x =>
+      normalizeName(x.name) === normalizeName(name) &&
+      x.condition === condition
+    );
+
+    if (!matches.length) return null;
+
+    const prices = matches.map(x => Number(x.price)).sort((a, b) => a - b);
+    const middle = Math.floor(prices.length / 2);
+    const median = prices.length % 2
+      ? prices[middle]
+      : (prices[middle - 1] + prices[middle]) / 2;
+
+    return {
+      count: prices.length,
+      min: prices[0],
+      max: prices[prices.length - 1],
+      median
+    };
+  }
+
+  function getRating(x) {
+    const profit = x.sell - x.buy - x.cost;
+    const roi = profit / x.buy;
+    if (profit >= 3000 && roi >= 0.2) return "good";
+    if (profit > 0 && roi >= 0.1) return "check";
+    return "bad";
+  }
+
+  function getRatingText(x) {
+    const rating = getRating(x);
+    if (rating === "good") return "Перспективный";
+    if (rating === "check") return "Нужно проверить";
+    return "Слабая экономика";
+  }
+
+  function getMarketAdvice(x) {
+    const stats = getMarketStats(x.name, x.condition || "Б/у");
+    if (!stats) return null;
+
+    const suggestedSell = Math.round(stats.median * 0.95);
+    const maxBuy = Math.floor(Math.min(
+      (suggestedSell - x.cost) / 1.2,
+      suggestedSell - x.cost - 3000
+    ));
+    const profit = suggestedSell - x.buy - x.cost;
+    const roi = x.buy > 0 ? profit / x.buy : 0;
+
+    let advice = "bad";
+    let adviceText = "ОТКАЗАТЬСЯ";
+
+    if (maxBuy > 0 && x.buy <= maxBuy) {
+      advice = "good";
+      adviceText = "ПОКУПАТЬ";
+    } else if (profit > 0 && roi >= 0.1) {
+      advice = "check";
+      adviceText = "ПРОВЕРИТЬ / ТОРГОВАТЬСЯ";
+    }
+
+    return {
+      stats, suggestedSell, maxBuy, profit, roi, advice, adviceText
+    };
   }
 
   function render() {
-    document.getElementById("count").textContent = items.length;
-        const budget = 50000;
-
-    const invested = items.reduce(
-      (sum, x) => sum + Number(x.buy || 0), 0
-    );
-
+    const budget = 50000;
+    const invested = items.reduce((sum, x) => sum + Number(x.buy || 0), 0);
     const remaining = budget - invested;
 
-    document.getElementById("invested").textContent =
-      invested.toLocaleString("ru-RU") + " ₽";
-
-    document.getElementById("remaining").textContent =
-      remaining.toLocaleString("ru-RU") + " ₽";
-
+    document.getElementById("count").textContent = items.length;
+    document.getElementById("invested").textContent = money(invested);
+    document.getElementById("remaining").textContent = money(remaining);
     document.getElementById("budgetWarning").textContent =
       remaining < 0
-        ? "Внимание! Превышен бюджет на " +
-          Math.abs(remaining).toLocaleString("ru-RU") + " ₽"
+        ? "Внимание! Превышен бюджет на " + money(Math.abs(remaining))
         : "";
-    document.getElementById("total").textContent =
-      items.reduce((sum, x) => sum + x.sell - x.buy - x.cost, 0).toLocaleString("ru-RU") + " ₽";
 
-        const filter = document.getElementById("filter").value;
+    document.getElementById("total").textContent = money(
+      items.reduce((sum, x) =>
+        sum + Number(x.sell) - Number(x.buy) - Number(x.cost || 0), 0)
+    );
 
+    document.getElementById("marketItems").innerHTML = marketItems.length
+      ? marketItems.map((x, index) => `
+        <div class="item">
+          <strong>${escapeHTML(x.name)}</strong>
+          <div>${money(x.price)} · ${escapeHTML(x.condition)}</div>
+          <div class="muted">Добавлено: ${escapeHTML(x.date)}</div>
+          ${x.url ? `<a href="${escapeHTML(x.url)}" target="_blank" rel="noopener">Открыть объявление</a>` : ""}
+          <button class="delete" onclick="removeMarketItem(${index})">Удалить цену</button>
+        </div>
+      `).join("")
+      : "<p class='muted'>Цены конкурентов пока не добавлены.</p>";
+
+    const filter = document.getElementById("filter").value;
     const filteredItems = items
       .map((x, index) => ({...x, originalIndex: index}))
       .filter(x => filter === "all" || getRating(x) === filter);
 
     document.getElementById("items").innerHTML = filteredItems.length
-      ? filteredItems.map(x => `
-      <div class="item">
-        <strong>${escapeHTML(x.name)}</strong>
-        <div class="muted">${escapeHTML(x.category)} · ${x.date}</div>
-        Покупка: ${x.buy.toLocaleString("ru-RU")} ₽<br>
-        Продажа: ${x.sell.toLocaleString("ru-RU")} ₽<br>
-        <span class="profit">Прибыль: ${(x.sell-x.buy-x.cost).toLocaleString("ru-RU")} ₽</span>
-        <div>ROI: ${((x.sell-x.buy-x.cost)/x.buy*100).toFixed(1)}%</div>
-        <div>Оценка: ${getRatingText(x)}</div>
-        <button class="delete" onclick="removeItem(${x.originalIndex})">Удалить</button>
-      </div>
-    `).join("")
+      ? filteredItems.map(x => {
+          const advice = getMarketAdvice(x);
+          return `
+            <div class="item">
+              <strong>${escapeHTML(x.name)}</strong>
+              <div class="muted">${escapeHTML(x.category)} · ${escapeHTML(x.date)}</div>
+              Покупка: ${money(x.buy)}<br>
+              План продажи: ${money(x.sell)}<br>
+              <span class="profit">Прибыль по плану: ${money(x.sell-x.buy-x.cost)}</span>
+              <div>ROI по плану: ${((x.sell-x.buy-x.cost)/x.buy*100).toFixed(1)}%</div>
+              <div>Оценка по плану: ${getRatingText(x)}</div>
+              ${advice ? `
+                <div class="market-result">
+                  <strong>АНАЛИЗ РЫНКА AMI</strong>
+                  <div>Количество аналогов: ${advice.stats.count}</div>
+                  <div>Минимальная цена: ${money(advice.stats.min)}</div>
+                  <div>Медианная цена: ${money(advice.stats.median)}</div>
+                  <div>Максимальная цена: ${money(advice.stats.max)}</div>
+                  <hr>
+                  <div>Рекомендуемая цена продажи: <strong>${money(advice.suggestedSell)}</strong></div>
+                  <div>Максимальная цена закупки: <strong>${money(advice.maxBuy)}</strong></div>
+                  <div>Расчётная прибыль: ${money(advice.profit)}</div>
+                  <div>Расчётный ROI: ${(advice.roi*100).toFixed(1)}%</div>
+                  <p class="${advice.advice}">${advice.adviceText}</p>
+                  <div class="muted">Рекомендация основана на введённых ценах объявлений, а не на подтверждённых сделках.</div>
+                </div>
+              ` : `
+                <div class="market-result muted">
+                  Нет аналогов с таким же названием и состоянием. Добавь цены конкурентов в разделе «Анализ рынка».
+                </div>
+              `}
+              ${x.url ? `<a href="${escapeHTML(x.url)}" target="_blank" rel="noopener">Открыть объявление</a>` : ""}
+              <button class="delete" onclick="removeItem(${x.originalIndex})">Удалить товар</button>
+            </div>
+          `;
+        }).join("")
       : "<p class='muted'>В этой категории пока нет товаров.</p>";
   }
 
@@ -201,13 +340,25 @@ function getRatingText(x) {
   }
 
   function exportCSV() {
-    const rows = [["Название","Категория","Покупка","Продажа","Расходы","Прибыль"]];
+    const rows = [[
+      "Название", "Категория", "Покупка", "Продажа",
+      "Расходы", "Прибыль", "ROI"
+    ]];
+
     items.forEach(x => rows.push([
-      x.name, x.category, x.buy, x.sell, x.cost, x.sell-x.buy-x.cost
+      x.name, x.category, x.buy, x.sell, x.cost,
+      x.sell-x.buy-x.cost,
+      ((x.sell-x.buy-x.cost)/x.buy*100).toFixed(1) + "%"
     ]));
-    const csv = "\uFEFF" + rows.map(r => r.join(";")).join("\n");
+
+    const csv = "\uFEFF" + rows.map(r =>
+      r.map(value => `"${String(value).replace(/"/g, '""')}"`).join(";")
+    ).join("\n");
+
     const a = document.createElement("a");
-    a.href = URL.createObjectURL(new Blob([csv], {type:"text/csv;charset=utf-8"}));
+    a.href = URL.createObjectURL(
+      new Blob([csv], {type:"text/csv;charset=utf-8"})
+    );
     a.download = "ami-mobile.csv";
     a.click();
     URL.revokeObjectURL(a.href);
@@ -215,11 +366,13 @@ function getRatingText(x) {
 
   render();
 </script>
+
 <script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./sw.js");
   });
 }
-</script></body>
+</script>
+</body>
 </html>
