@@ -18,12 +18,13 @@ h3{margin-top:0}
 input,select,button{width:100%;padding:13px;margin:7px 0;border:1px solid #4b5563;border-radius:9px;font-size:16px}
 input,select{background:#111827;color:white}
 button{background:#2563eb;color:white;border:0;font-weight:bold;cursor:pointer}
-.stat{font-size:23px;font-weight:bold}
+.stat{font-size:23px;font-weight:bold;margin:5px 0 12px}
 .profit,.good{color:#4ade80}
 .check{color:#facc15}
 .bad{color:#f87171}
 .item{border-top:1px solid #374151;padding:13px 0}
 .delete{background:#991b1b}
+.secondary{background:#374151}
 .market-result{background:#111827;border-radius:9px;padding:12px;margin-top:10px}
 a{color:#60a5fa;overflow-wrap:anywhere}
 hr{border:0;border-top:1px solid #374151;margin:12px 0}
@@ -36,9 +37,13 @@ hr{border:0;border-top:1px solid #374151;margin:12px 0}
 
 <div class="card">
 <h3>Финансы и бюджет</h3>
-<div class="muted">Общий бюджет</div>
-<div class="stat">50 000 ₽</div>
-<div class="muted">Вложено</div>
+<div class="muted">Общий бюджет, ₽</div>
+<input id="budgetInput" type="number" min="0" step="1000" placeholder="Например, 100000">
+<button onclick="updateBudget()">Сохранить бюджет</button>
+<div class="muted">Текущий бюджет</div>
+<div class="stat" id="budgetDisplay">50 000 ₽</div>
+<hr>
+<div class="muted">Вложено в купленные товары</div>
 <div class="stat" id="invested">0 ₽</div>
 <div class="muted">Свободный бюджет</div>
 <div class="stat" id="remaining">50 000 ₽</div>
@@ -46,10 +51,14 @@ hr{border:0;border-top:1px solid #374151;margin:12px 0}
 </div>
 
 <div class="card">
-<div class="muted">Количество товаров</div>
+<div class="muted">Всего товаров в анализе</div>
 <div class="stat" id="count">0</div>
-<div class="muted">Суммарная расчётная прибыль</div>
+<div class="muted">Уже куплено товаров</div>
+<div class="stat" id="boughtCount">0</div>
+<div class="muted">Расчётная прибыль по всем товарам</div>
 <div class="stat profit" id="total">0 ₽</div>
+<div class="muted">Расчётная прибыль по купленным товарам</div>
+<div class="stat profit" id="boughtProfit">0 ₽</div>
 </div>
 
 <div class="card">
@@ -72,14 +81,18 @@ hr{border:0;border-top:1px solid #374151;margin:12px 0}
 </select>
 <input id="buy" type="number" min="1" placeholder="Цена закупки, ₽">
 <input id="sell" type="number" min="1" placeholder="План продажи, ₽">
-<input id="cost" type="number" min="0" placeholder="Все дополнительные расходы, ₽">
+<input id="cost" type="number" min="0" placeholder="Дополнительные расходы, ₽">
+<select id="status">
+<option value="Рассматриваю">Пока рассматриваю</option>
+<option value="Куплен">Уже куплен</option>
+</select>
 <input id="url" placeholder="Ссылка на объявление">
 <button onclick="addItem()">Добавить товар</button>
 </div>
 
 <div class="card">
 <h3>База рыночных объявлений</h3>
-<p class="muted">Вноси цены конкурентов с Авито. Сравнивай одинаковые модели, комплектации и состояние.</p>
+<p class="muted">Добавляй цены конкурентов с Авито. Сравнивай одинаковые модели, комплектации и состояние.</p>
 <input id="marketName" placeholder="Название и точная модель">
 <input id="marketPrice" type="number" min="1" placeholder="Цена объявления, ₽">
 <select id="marketCondition">
@@ -93,7 +106,7 @@ hr{border:0;border-top:1px solid #374151;margin:12px 0}
 
 <div class="card">
 <h3>Аналитика и рекомендации AMI</h3>
-<select id="filter" onchange="render()">
+<select id="filter" onchange="renderItems()">
 <option value="all">Все товары</option>
 <option value="good">Перспективные</option>
 <option value="check">Нужно проверить</option>
@@ -109,7 +122,7 @@ hr{border:0;border-top:1px solid #374151;margin:12px 0}
 <script>
 "use strict";
 
-const BUDGET = 50000;
+const DEFAULT_BUDGET = 50000;
 const MIN_PROFIT = 3000;
 const MIN_ROI = 0.20;
 const MIN_ANALOGUES = 3;
@@ -123,7 +136,18 @@ function loadArray(key) {
   }
 }
 
-let items = loadArray("ami_items");
+function loadBudget() {
+  const value = Number(localStorage.getItem("ami_budget"));
+  return localStorage.getItem("ami_budget") !== null &&
+    Number.isFinite(value) && value >= 0
+    ? value : DEFAULT_BUDGET;
+}
+
+let BUDGET = loadBudget();
+let items = loadArray("ami_items").map(x => ({
+  ...x,
+  status: x.status === "Куплен" ? "Куплен" : "Рассматриваю"
+}));
 let marketItems = loadArray("ami_market");
 
 function money(value) {
@@ -147,9 +171,7 @@ function escapeHTML(value) {
 function safeUrl(value) {
   try {
     const url = new URL(String(value || "").trim());
-    if (url.protocol === "https:" || url.protocol === "http:") {
-      return url.href;
-    }
+    if (url.protocol === "https:" || url.protocol === "http:") return url.href;
   } catch {}
   return "";
 }
@@ -158,10 +180,27 @@ function save() {
   try {
     localStorage.setItem("ami_items", JSON.stringify(items));
     localStorage.setItem("ami_market", JSON.stringify(marketItems));
+    localStorage.setItem("ami_budget", String(BUDGET));
     render();
   } catch {
     alert("Не удалось сохранить данные. Проверь свободное место в браузере.");
   }
+}
+
+function updateBudget() {
+  const field = document.getElementById("budgetInput");
+  if (field.value.trim() === "") {
+    alert("Введи сумму бюджета.");
+    return;
+  }
+  const value = Number(field.value);
+  if (!Number.isFinite(value) || value < 0) {
+    alert("Бюджет должен быть нулём или положительной суммой.");
+    return;
+  }
+  BUDGET = Math.round(value);
+  save();
+  alert("Новый бюджет сохранён: " + money(BUDGET));
 }
 
 function addItem() {
@@ -169,17 +208,21 @@ function addItem() {
   const buy = Number(document.getElementById("buy").value);
   const sell = Number(document.getElementById("sell").value);
   const cost = Number(document.getElementById("cost").value || 0);
+  const urlInput = document.getElementById("url").value.trim();
 
   if (!name || !Number.isFinite(buy) || !Number.isFinite(sell) ||
       !Number.isFinite(cost) || buy <= 0 || sell <= 0 || cost < 0) {
     alert("Проверь название и цены. Закупка и продажа должны быть больше нуля.");
     return;
   }
-
-  const urlInput = document.getElementById("url").value.trim();
   if (urlInput && !safeUrl(urlInput)) {
     alert("Ссылка должна начинаться с http:// или https://");
     return;
+  }
+
+  const status = document.getElementById("status").value;
+  if (status === "Куплен" && buy > BUDGET - getInvested()) {
+    if (!confirm("Покупка превышает свободный бюджет. Всё равно отметить товар как купленный?")) return;
   }
 
   items.push({
@@ -187,6 +230,7 @@ function addItem() {
     category: document.getElementById("category").value,
     condition: document.getElementById("condition").value,
     buy, sell, cost,
+    status,
     url: urlInput,
     date: new Date().toLocaleDateString("ru-RU")
   });
@@ -194,6 +238,7 @@ function addItem() {
   ["name","buy","sell","cost","url"].forEach(id => {
     document.getElementById(id).value = "";
   });
+  document.getElementById("status").value = "Рассматриваю";
   save();
 }
 
@@ -206,7 +251,6 @@ function addMarketItem() {
     alert("Введи название товара и положительную цену.");
     return;
   }
-
   if (urlInput && !safeUrl(urlInput)) {
     alert("Ссылка должна начинаться с http:// или https://");
     return;
@@ -223,6 +267,26 @@ function addMarketItem() {
   ["marketName","marketPrice","marketUrl"].forEach(id => {
     document.getElementById(id).value = "";
   });
+  save();
+}
+
+function getInvested() {
+  return items
+    .filter(x => x.status === "Куплен")
+    .reduce((sum,x) => sum + Number(x.buy || 0), 0);
+}
+
+function setItemStatus(index, value) {
+  if (!items[index]) return;
+  if (value === "Куплен" && items[index].status !== "Куплен") {
+    const available = BUDGET - getInvested();
+    if (Number(items[index].buy) > available &&
+        !confirm("Цена покупки превышает свободный бюджет. Продолжить?")) {
+      render();
+      return;
+    }
+  }
+  items[index].status = value;
   save();
 }
 
@@ -244,7 +308,6 @@ function getMarketStats(name, condition) {
     x.condition === condition &&
     Number(x.price) > 0
   );
-
   if (!matches.length) return null;
 
   const prices = matches.map(x => Number(x.price)).sort((a,b) => a-b);
@@ -262,10 +325,8 @@ function getMarketStats(name, condition) {
 }
 
 function getRating(x) {
-  const buy = Number(x.buy);
-  const profit = Number(x.sell) - buy - Number(x.cost || 0);
-  const roi = buy > 0 ? profit / buy : 0;
-
+  const profit = Number(x.sell) - Number(x.buy) - Number(x.cost || 0);
+  const roi = Number(x.buy) > 0 ? profit / Number(x.buy) : 0;
   if (profit >= MIN_PROFIT && roi >= MIN_ROI) return "good";
   if (profit > 0 && roi >= 0.10) return "check";
   return "bad";
@@ -279,20 +340,15 @@ function getRatingText(x) {
 }
 
 function getMarketAdvice(x) {
-  const condition = x.condition || "Б/у";
-  const stats = getMarketStats(x.name, condition);
+  const stats = getMarketStats(x.name, x.condition || "Б/у");
   if (!stats) return null;
 
   const suggestedSell = Math.round(stats.median * 0.95);
   const cost = Number(x.cost || 0);
   const buy = Number(x.buy);
-
-  // Закупка должна обеспечивать одновременно ROI >= 20%
-  // и прибыль >= 3000 ₽ после расходов.
   const maxByROI = (suggestedSell - cost) / (1 + MIN_ROI);
   const maxByProfit = suggestedSell - cost - MIN_PROFIT;
   const maxBuy = Math.max(0, Math.floor(Math.min(maxByROI, maxByProfit)));
-
   const profit = suggestedSell - buy - cost;
   const roi = buy > 0 ? profit / buy : 0;
 
@@ -310,14 +366,11 @@ function getMarketAdvice(x) {
     text = "ПРОВЕРИТЬ / ТОРГОВАТЬСЯ";
   }
 
-  return {
-    stats, suggestedSell, maxBuy, profit, roi, status, text
-  };
+  return {stats,suggestedSell,maxBuy,profit,roi,status,text};
 }
 
 function renderMarket() {
   const container = document.getElementById("marketItems");
-
   container.innerHTML = marketItems.length
     ? marketItems.map((x,index) => {
         const url = safeUrl(x.url);
@@ -327,9 +380,8 @@ function renderMarket() {
             <div>${money(x.price)} · ${escapeHTML(x.condition || "Б/у")}</div>
             <div class="muted">${escapeHTML(x.date || "")}</div>
             ${url ? `<a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">Открыть объявление</a>` : ""}
-            <button class="delete" onclick="removeMarketItem(${index})">Удалить</button>
-          </div>
-        `;
+            <button class="delete" onclick="removeMarketItem(${index})">Удалить аналог</button>
+          </div>`;
       }).join("")
     : '<p class="muted">Объявления конкурентов пока не добавлены.</p>';
 }
@@ -346,11 +398,17 @@ function renderItems() {
         const profitPlan = Number(x.sell) - Number(x.buy) - Number(x.cost || 0);
         const roiPlan = Number(x.buy) > 0 ? profitPlan / Number(x.buy) : 0;
         const url = safeUrl(x.url);
+        const status = x.status || "Рассматриваю";
 
         return `
           <div class="item">
             <strong>${escapeHTML(x.name)}</strong>
             <div class="muted">${escapeHTML(x.category || "")} · ${escapeHTML(x.condition || "Б/у")} · ${escapeHTML(x.date || "")}</div>
+            <p><strong>Статус товара</strong></p>
+            <select onchange="setItemStatus(${x.originalIndex},this.value)">
+              <option value="Рассматриваю" ${status === "Рассматриваю" ? "selected" : ""}>Рассматриваю — ещё не куплен</option>
+              <option value="Куплен" ${status === "Куплен" ? "selected" : ""}>Куплен — деньги вложены</option>
+            </select>
             Покупка: ${money(x.buy)}<br>
             План продажи: ${money(x.sell)}<br>
             Расходы: ${money(x.cost)}<br>
@@ -381,22 +439,28 @@ function renderItems() {
             `}
             ${url ? `<a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">Открыть исходное объявление</a>` : ""}
             <button class="delete" onclick="removeItem(${x.originalIndex})">Удалить товар</button>
-          </div>
-        `;
+          </div>`;
       }).join("")
     : '<p class="muted">Товаров в этой категории пока нет.</p>';
 }
 
 function render() {
-  const invested = items.reduce((sum,x) => sum + Number(x.buy || 0), 0);
+  const invested = getInvested();
   const remaining = BUDGET - invested;
   const total = items.reduce((sum,x) =>
     sum + Number(x.sell || 0) - Number(x.buy || 0) - Number(x.cost || 0), 0);
+  const bought = items.filter(x => x.status === "Куплен");
+  const boughtProfit = bought.reduce((sum,x) =>
+    sum + Number(x.sell || 0) - Number(x.buy || 0) - Number(x.cost || 0), 0);
 
+  document.getElementById("budgetInput").value = BUDGET;
+  document.getElementById("budgetDisplay").textContent = money(BUDGET);
   document.getElementById("count").textContent = items.length;
+  document.getElementById("boughtCount").textContent = bought.length;
   document.getElementById("invested").textContent = money(invested);
   document.getElementById("remaining").textContent = money(remaining);
   document.getElementById("total").textContent = money(total);
+  document.getElementById("boughtProfit").textContent = money(boughtProfit);
   document.getElementById("budgetWarning").textContent =
     remaining < 0 ? "Бюджет превышен на " + money(Math.abs(remaining)) : "";
 
@@ -406,23 +470,20 @@ function render() {
 
 function exportCSV() {
   const rows = [[
-    "Название","Категория","Состояние","Покупка",
+    "Название","Категория","Состояние","Статус","Покупка",
     "Продажа","Расходы","Прибыль","ROI"
   ]];
-
   items.forEach(x => {
     const profit = Number(x.sell)-Number(x.buy)-Number(x.cost || 0);
     const roi = Number(x.buy) > 0 ? profit/Number(x.buy)*100 : 0;
     rows.push([
-      x.name,x.category,x.condition || "Б/у",x.buy,x.sell,
-      x.cost || 0,profit,roi.toFixed(1)+"%"
+      x.name,x.category,x.condition || "Б/у",x.status || "Рассматриваю",
+      x.buy,x.sell,x.cost || 0,profit,roi.toFixed(1)+"%"
     ]);
   });
-
   const csv = "\uFEFF" + rows.map(row =>
     row.map(v => '"' + String(v ?? "").replace(/"/g,'""') + '"').join(";")
   ).join("\r\n");
-
   const blob = new Blob([csv],{type:"text/csv;charset=utf-8"});
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
@@ -434,8 +495,9 @@ function exportCSV() {
 
 function exportBackup() {
   const data = {
-    version: 1,
+    version: 2,
     exportedAt: new Date().toISOString(),
+    budget: BUDGET,
     items,
     marketItems
   };
@@ -451,7 +513,6 @@ function exportBackup() {
 function importBackup(event) {
   const file = event.target.files[0];
   if (!file) return;
-
   const reader = new FileReader();
   reader.onload = () => {
     try {
@@ -459,9 +520,15 @@ function importBackup(event) {
       if (!Array.isArray(data.items) || !Array.isArray(data.marketItems)) {
         throw new Error("Неверный формат резервной копии");
       }
-      if (!confirm("Заменить текущие товары и базу конкурентов данными из файла?")) return;
-      items = data.items;
+      if (!confirm("Заменить текущие товары, аналоги и бюджет данными из файла?")) return;
+      items = data.items.map(x => ({
+        ...x,
+        status: x.status === "Куплен" ? "Куплен" : "Рассматриваю"
+      }));
       marketItems = data.marketItems;
+      if (Number.isFinite(Number(data.budget)) && Number(data.budget) >= 0) {
+        BUDGET = Number(data.budget);
+      }
       save();
       alert("Данные восстановлены.");
     } catch {
