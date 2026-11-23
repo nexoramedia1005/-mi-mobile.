@@ -18,20 +18,25 @@ params = {
     "q": "iphone",
     "location": "moskva",
     "category": "telefony",
-    "condition": "used",
     "sort": "newest",
     "page": "1",
 }
 
 url = API_URL + "?" + urlencode(params)
+
 request = Request(
     url,
-    headers={"x-api-key": API_KEY, "Accept": "application/json"}
+    headers={
+        "x-api-key": API_KEY,
+        "Accept": "application/json"
+    }
 )
 
 try:
     with urlopen(request, timeout=120) as response:
-        payload = json.loads(response.read().decode("utf-8"))
+        payload = json.loads(
+            response.read().decode("utf-8")
+        )
 except HTTPError as error:
     detail = error.read().decode("utf-8", errors="replace")
     print(f"API error HTTP {error.code}: {detail[:1000]}")
@@ -47,7 +52,8 @@ if payload.get("success") is False:
 listings = payload.get("listings")
 
 if not isinstance(listings, list):
-    print("Unexpected API response: listings missing")
+    print("Unexpected API response:")
+    print(json.dumps(payload, ensure_ascii=False)[:2000])
     sys.exit(1)
 
 result = {
