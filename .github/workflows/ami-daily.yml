@@ -1,3 +1,4 @@
+
 name: AMI Daily Automation
 
 on:
@@ -5,16 +6,30 @@ on:
     - cron: "0 6 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
-  daily-check:
+  daily-search:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Start AMI
-        run: |
-          echo "AMI automation started"
-          echo "Daily schedule is working"
-          echo "Next step: connect a data source"
+      - name: Download AMI
+        uses: actions/checkout@v4
 
-      - name: Finish
-        run: echo "AMI daily check completed"
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Search Avito
+        env:
+          AVITO_API_KEY: ${{ secrets.AVITO_API_KEY }}
+        run: python ami_daily.py
+
+      - name: Save search results
+        uses: actions/upload-artifact@v4
+        with:
+          name: ami-avito-search
+          path: ami-search-test.json
+          retention-days: 7
