@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   daily-search:
@@ -27,7 +27,24 @@ jobs:
           AVITO_API_KEY: ${{ secrets.AVITO_API_KEY }}
         run: python ami_daily.py
 
-      - name: Save search results
+      - name: Save results to AMI database
+        run: |
+          mkdir -p data
+          cp ami-search-test.json data/avito-results.json
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/avito-results.json
+
+          if git diff --cached --quiet; then
+            echo "No new data to save"
+          else
+            git commit -m "Update AMI Avito search database"
+            git push
+          fi
+
+      - name: Save backup artifact
         uses: actions/upload-artifact@v4
         with:
           name: ami-avito-search
