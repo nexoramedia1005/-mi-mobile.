@@ -30,7 +30,7 @@ jobs:
       - name: Save results to AMI database
         run: |
           mkdir -p data
-          cp ami-search-test.json data/avito-results.json
+          cp ami-search-public.json data/avito-results.json
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
