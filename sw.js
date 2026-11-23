@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "ami-mobile-v3";
+const CACHE_NAME = "ami-mobile-v4";
 
 const FILES = [
   "./",
@@ -19,7 +19,7 @@ self.addEventListener("activate", event => {
     caches.keys().then(keys =>
       Promise.all(
         keys
-          .filter(key => key !== CACHE_NAME)
+          .filter(key => key.startsWith("ami-mobile-") && key !== CACHE_NAME)
           .map(key => caches.delete(key))
       )
     )
@@ -31,7 +31,14 @@ self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
 
   const url = new URL(event.request.url);
+
   if (url.origin !== self.location.origin) return;
+
+  // Базу объявлений всегда запрашиваем с сервера.
+  if (url.pathname.endsWith("/data/avito-results.json")) {
+    event.respondWith(fetch(event.request, {cache: "no-store"}));
+    return;
+  }
 
   event.respondWith(
     fetch(event.request)
