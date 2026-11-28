@@ -1,0 +1,56 @@
+name: Publish AMI 2.0 and existing site
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # AMI Daily Automation runs at 06:00 UTC; publish after its data update.
+    - cron: "30 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout existing site from main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: site
+
+      - name: Checkout AMI 2.0
+        uses: actions/checkout@v4
+        with:
+          ref: ami2-development
+          path: ami2-source
+
+      - name: Combine site without replacing the old version
+        run: |
+          mkdir -p site/ami2
+          cp -R ami2-source/ami2/. site/ami2/
+          touch site/.nojekyll
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload complete website
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy website
+        id: deployment
+        uses: actions/deploy-pages@v4
