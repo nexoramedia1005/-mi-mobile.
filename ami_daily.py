@@ -4,6 +4,7 @@ import os
 import sys
 import time
 from datetime import datetime, timezone
+from pathlib import Path
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
@@ -15,187 +16,313 @@ if not API_KEY:
     print("ERROR: AVITO_API_KEY secret is missing.")
     sys.exit(1)
 
-params = {
-    "q": "iphone",
-    "location": "moskva",
-    "category": "telefony",
-    "sort": "newest",
-    "page": "1",
-}
-
-url = API_URL + "?" + urlencode(params)
-
-request = Request(
-    url,
-    headers={
-        "x-api-key": API_KEY,
-        "Accept": "application/json"
+# Пять поисковых запросов.
+SEARCHES = [
+    {
+        "key": "iphone",
+        "name": "iPhone",
+        "q": "iphone",
+        "category": "telefony"
+    },
+    {
+        "key": "laptops",
+        "name": "Ноутбуки",
+        "q": "ноутбук",
+        "category": "noutbuki"
+    },
+    {
+        "key": "sneakers",
+        "name": "Кроссовки",
+        "q": "кроссовки",
+        "category": "odezhda_obuv_aksessuary"
+    },
+    {
+        "key": "winter_jackets",
+        "name": "Зимние куртки",
+        "q": "зимняя куртка",
+        "category": "odezhda_obuv_aksessuary"
+    },
+    {
+        "key": "tv",
+        "name": "Телевизоры",
+        "q": "телевизор",
+        "category": "bytovaya_elektronika"
     }
-)
-
-# Повторные попытки при временных ошибках
-payload = None
-delays = [30, 60, 120]
-
-for attempt in range(4):
-    try:
-        print(f"API request: attempt {attempt + 1}/4")
-
-        with urlopen(request, timeout=120) as response:
-            payload = json.loads(response.read().decode("utf-8"))
-
-        break
-
-    except HTTPError as error:
-        detail = error.read().decode("utf-8", errors="replace")
-
-        temporary = (
-            error.code == 429
-            or error.code >= 500
-            or (
-                error.code == 502
-                and "status 429" in detail
-            )
-        )
-
-        if not temporary or attempt == 3:
-            print(f"API error HTTP {error.code}: {detail[:1000]}")
-            sys.exit(1)
-
-        print(f"Temporary API error: HTTP {error.code}")
-        print(f"Waiting {delays[attempt]} seconds before retry")
-        time.sleep(delays[attempt])
-
-    except (URLError, TimeoutError) as error:
-        if attempt == 3:
-            print(f"Network/API error: {error}")
-            sys.exit(1)
-
-        print(f"Network error: {error}")
-        print(f"Waiting {delays[attempt]} seconds before retry")
-        time.sleep(delays[attempt])
-
-if payload is None:
-    print("ERROR: API returned no data.")
-    sys.exit(1)
-
-if payload.get("success") is False:
-    print("API error:", payload.get("error", "unknown"))
-    sys.exit(1)
-
-listings = payload.get("listings")
-
-if not isinstance(listings, list):
-    print("Unexpected API response:")
-    print(json.dumps(payload, ensure_ascii=False)[:2000])
-    sys.exit(1)
-
-generated_at = datetime.now(timezone.utc).isoformat()
-
-# Полная резервная копия — только в архиве Actions.
-full_result = {
-    "generated_at": generated_at,
-    "source": "API.SH Avito Search",
-    "query": params,
-    "credits_used": payload.get("credits_used"),
-    "total_found": payload.get("total"),
-    "count_returned": len(listings),
-    "listings": listings,
-}
-
-with open("ami-search-test.json", "w", encoding="utf-8") as file:
-    json.dump(full_result, file, ensure_ascii=False, indent=2)
-
-# Очищенная публичная база AMI.
-allowed_fields = {
-    "id", "title", "price",
-    "url", "link", "avito_url",
-    "created_at", "published_at", "date",
-    "location", "city", "region",
-    "category", "params", "attributes"
-}
-
-allowed_param_words = (
-    "model", "память", "памяти", "gb", "гб",
-    "condition", "состояние", "диагональ",
-    "цвет", "экран", "комплект"
-)
-
-def safe_params(value):
-    if isinstance(value, dict):
-        result = {}
-
-        for key, item in value.items():
-            key_text = str(key).lower()
-
-            if any(word in key_text for word in allowed_param_words):
-                if isinstance(item, (str, int, float, bool)) or item is None:
-                    result[key] = item
-
-        return result
-
-    if isinstance(value, list):
-        result = []
-
-        for item in value:
-            if isinstance(item, dict):
-                cleaned = safe_params(item)
-                if cleaned:
-                    result.append(cleaned)
-
-        return result
-
-    return None
-
-def clean_listing(listing):
-    cleaned = {}
-
-    for key, value in listing.items():
-        if key not in allowed_fields:
-            continue
-
-        if key in ("params", "attributes"):
-            safe_value = safe_params(value)
-            if safe_value:
-                cleaned[key] = safe_value
-
-        elif key == "location":
-            if isinstance(value, str):
-                cleaned[key] = value
-
-            elif isinstance(value, dict):
-                location = {}
-
-                for loc_key in ("city", "region"):
-                    if isinstance(value.get(loc_key), str):
-                        location[loc_key] = value[loc_key]
-
-                if location:
-                    cleaned[key] = location
-
-        elif isinstance(value, (str, int, float, bool)) or value is None:
-            cleaned[key] = value
-
-    return cleaned
-
-public_listings = [
-    clean_listing(item)
-    for item in listings
-    if isinstance(item, dict)
 ]
 
-public_result = {
-    "generated_at": generated_at,
-    "source": "API.SH Avito Search",
-    "query": params,
-    "total_found": payload.get("total"),
-    "count_returned": len(public_listings),
-    "listings": public_listings,
-}
+def api_request(params):
+    url = API_URL + "?" + urlencode(params)
 
-with open("ami-search-public.json", "w", encoding="utf-8") as file:
-    json.dump(public_result, file, ensure_ascii=False, indent=2)
+    request = Request(
+        url,
+        headers={
+            "x-api-key": API_KEY,
+            "Accept": "application/json"
+        }
+    )
 
-print(f"API search successful. Listings: {len(listings)}")
-print(f"Public listings prepared: {len(public_listings)}")
-print(f"Credits used: {payload.get('credits_used')}")
+    delays = [30, 60, 120]
+
+    for attempt in range(4):
+        try:
+            print(f"API attempt {attempt + 1}/4")
+
+            with urlopen(request, timeout=120) as response:
+                data = json.loads(
+                    response.read().decode("utf-8")
+                )
+
+            if data.get("success") is False:
+                raise RuntimeError(
+                    data.get("error", "Unknown API error")
+                )
+
+            return data
+
+        except HTTPError as error:
+            detail = error.read().decode(
+                "utf-8", errors="replace"
+            )
+
+            temporary = (
+                error.code == 429
+                or error.code >= 500
+                or "status 429" in detail
+            )
+
+            if not temporary or attempt == 3:
+                raise RuntimeError(
+                    f"HTTP {error.code}: {detail[:700]}"
+                )
+
+            print(
+                f"Temporary HTTP {error.code}. "
+                f"Waiting {delays[attempt]} seconds."
+            )
+            time.sleep(delays[attempt])
+
+        except (URLError, TimeoutError) as error:
+            if attempt == 3:
+                raise RuntimeError(str(error))
+
+            print(
+                f"Network error. Waiting "
+                f"{delays[attempt]} seconds."
+            )
+            time.sleep(delays[attempt])
+
+    raise RuntimeError("API request failed")
+
+
+def clean_listing(item, search):
+    if not isinstance(item, dict):
+        return None
+
+    title = item.get("title")
+    price = item.get("price")
+
+    if not title or not isinstance(price, (int, float)):
+        return None
+
+    listing_id = item.get("id")
+    url = item.get("url") or item.get("link")
+
+    if not listing_id and not url:
+        return None
+
+    return {
+        "id": str(listing_id or url),
+        "title": str(title)[:300],
+        "price": price,
+        "url": url if isinstance(url, str) else "",
+        "published": item.get("published"),
+        "search_group": search["key"],
+        "search_name": search["name"]
+    }
+
+
+def load_history():
+    path = Path("data/market-history.json")
+
+    if not path.exists():
+        return {"version": 1, "snapshots": []}
+
+    try:
+        with path.open("r", encoding="utf-8") as file:
+            data = json.load(file)
+
+        if isinstance(data.get("snapshots"), list):
+            return data
+
+    except (OSError, json.JSONDecodeError):
+        print("WARNING: History file could not be read.")
+
+    return {"version": 1, "snapshots": []}
+
+
+def main():
+    generated_at = datetime.now(timezone.utc).isoformat()
+    today = generated_at[:10]
+
+    all_listings = {}
+    search_results = []
+    raw_results = []
+
+    for number, search in enumerate(SEARCHES, start=1):
+        print(
+            f"\nSEARCH {number}/{len(SEARCHES)}: "
+            f"{search['name']}"
+        )
+
+        params = {
+            "q": search["q"],
+            "location": "moskva",
+            "category": search["category"],
+            "radius_km": "100",
+            "sort": "newest",
+            "page": "1"
+        }
+
+        payload = api_request(params)
+        listings = payload.get("listings")
+
+        if not isinstance(listings, list):
+            raise RuntimeError(
+                f"Unexpected response for {search['name']}"
+            )
+
+        ids = []
+
+        for item in listings:
+            cleaned = clean_listing(item, search)
+
+            if not cleaned:
+                continue
+
+            listing_id = cleaned["id"]
+            ids.append(listing_id)
+
+            if listing_id not in all_listings:
+                all_listings[listing_id] = cleaned
+                all_listings[listing_id]["search_groups"] = [
+                    search["key"]
+                ]
+            elif search["key"] not in all_listings[
+                listing_id
+            ]["search_groups"]:
+                all_listings[listing_id][
+                    "search_groups"
+                ].append(search["key"])
+
+        search_results.append({
+            "key": search["key"],
+            "name": search["name"],
+            "category": search["category"],
+            "total_found": payload.get("total"),
+            "count_returned": len(listings),
+            "unique_count": len(set(ids)),
+            "credits_used": payload.get("credits_used"),
+            "ids": sorted(set(ids))
+        })
+
+        # В архив попадают только очищенные объявления.
+        raw_results.append({
+            "search": search["name"],
+            "total_found": payload.get("total"),
+            "listings": [
+                clean_listing(item, search)
+                for item in listings
+                if clean_listing(item, search)
+            ]
+        })
+
+        print(
+            f"Found: {len(listings)}; "
+            f"credits: {payload.get('credits_used')}"
+        )
+
+        # Небольшая пауза между запросами.
+        if number < len(SEARCHES):
+            time.sleep(3)
+
+    public_result = {
+        "generated_at": generated_at,
+        "source": "API.SH Avito Search",
+        "location": "Москва, радиус 100 км",
+        "searches": search_results,
+        "total_found": sum(
+            int(x.get("total_found") or 0)
+            for x in search_results
+        ),
+        "count_returned": len(all_listings),
+        "listings": list(all_listings.values())
+    }
+
+    Path("data").mkdir(exist_ok=True)
+
+    with open(
+        "ami-search-public.json", "w", encoding="utf-8"
+    ) as file:
+        json.dump(
+            public_result, file,
+            ensure_ascii=False, indent=2
+        )
+
+    # Сохраняем историю появления объявлений.
+    history = load_history()
+
+    snapshot = {
+        "date": today,
+        "generated_at": generated_at,
+        "searches": search_results
+    }
+
+    snapshots = [
+        x for x in history["snapshots"]
+        if x.get("date") != today
+    ]
+
+    snapshots.append(snapshot)
+
+    # Храним последние 45 дней.
+    history = {
+        "version": 1,
+        "updated_at": generated_at,
+        "snapshots": snapshots[-45:]
+    }
+
+    with open(
+        "data/market-history.json", "w", encoding="utf-8"
+    ) as file:
+        json.dump(
+            history, file,
+            ensure_ascii=False, separators=(",", ":")
+        )
+
+    # Резервный архив очищенных результатов.
+    archive = {
+        "generated_at": generated_at,
+        "searches": raw_results,
+        "count_unique": len(all_listings)
+    }
+
+    with open(
+        "ami-search-test.json", "w", encoding="utf-8"
+    ) as file:
+        json.dump(
+            archive, file,
+            ensure_ascii=False, indent=2
+        )
+
+    print("\nAMI SEARCH COMPLETED")
+    print(f"Unique listings: {len(all_listings)}")
+    print(f"Searches: {len(SEARCHES)}")
+    print(f"History days: {len(history['snapshots'])}")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as error:
+        print(f"\nAMI ERROR: {error}")
+        sys.exit(1)
