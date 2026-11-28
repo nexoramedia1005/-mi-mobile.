@@ -27,7 +27,7 @@ jobs:
           AVITO_API_KEY: ${{ secrets.AVITO_API_KEY }}
         run: python ami_daily.py
 
-      - name: Save results to AMI database
+      - name: Save results and market history
         run: |
           mkdir -p data
           cp ami-search-public.json data/avito-results.json
@@ -35,12 +35,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add data/avito-results.json
+          git add data/avito-results.json data/market-history.json
 
           if git diff --cached --quiet; then
             echo "No new data to save"
           else
-            git commit -m "Update AMI Avito search database"
+            git commit -m "Update AMI market database and history"
             git push
           fi
 
@@ -48,5 +48,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ami-avito-search
-          path: ami-search-test.json
+          path: |
+            ami-search-test.json
+            ami-search-public.json
           retention-days: 7
