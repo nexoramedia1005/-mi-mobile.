@@ -1,344 +1,3290 @@
 {
-  "generated_at": "2026-11-27T16:29:50.189389+00:00",
+  "generated_at": "2026-11-28T07:58:27.733523+00:00",
   "source": "API.SH Avito Search",
-  "query": {
-    "q": "iphone",
-    "location": "moskva",
-    "category": "telefony",
-    "sort": "newest",
-    "page": "1"
-  },
-  "total_found": 69127,
-  "count_returned": 50,
+  "location": "Москва, радиус 100 км",
+  "searches": [
+    {
+      "key": "iphone",
+      "name": "iPhone",
+      "category": "telefony",
+      "total_found": 68351,
+      "count_returned": 49,
+      "unique_count": 49,
+      "credits_used": 5,
+      "ids": [
+        "8412007097",
+        "8412173363",
+        "8424773861",
+        "8427966472",
+        "8428244223",
+        "8434051907",
+        "8434581550",
+        "8434768673",
+        "8434787657",
+        "8461884504",
+        "8461936326",
+        "8462259393",
+        "8464099688",
+        "8464277056",
+        "8478009142",
+        "8485863932",
+        "8486056366",
+        "8487113507",
+        "8501813864",
+        "8504608555",
+        "8509155126",
+        "8509281487",
+        "8509496979",
+        "8516093121",
+        "8516375038",
+        "8516588483",
+        "8527559158",
+        "8536996624",
+        "8537303450",
+        "8537470946",
+        "8537694509",
+        "8554770780",
+        "8555140897",
+        "8555182233",
+        "8567147775",
+        "8578086581",
+        "8579099949",
+        "8579461250",
+        "8581027110",
+        "8581489160",
+        "8581772495",
+        "8584842503",
+        "8585584056",
+        "8595571035",
+        "8608700420",
+        "8621615672",
+        "8639146570",
+        "8639445846",
+        "8639506251"
+      ]
+    },
+    {
+      "key": "laptops",
+      "name": "Ноутбуки",
+      "category": "noutbuki",
+      "total_found": 65201,
+      "count_returned": 50,
+      "unique_count": 50,
+      "credits_used": 5,
+      "ids": [
+        "8412714244",
+        "8424104136",
+        "8424462465",
+        "8424636234",
+        "8427881496",
+        "8428451116",
+        "8434393137",
+        "8434536818",
+        "8436377110",
+        "8442957757",
+        "8461908475",
+        "8462150730",
+        "8464355150",
+        "8464464404",
+        "8464775686",
+        "8465175672",
+        "8465340281",
+        "8477829155",
+        "8478104944",
+        "8486211640",
+        "8486537810",
+        "8486773343",
+        "8487018999",
+        "8487459288",
+        "8487777428",
+        "8501309689",
+        "8501455221",
+        "8504242990",
+        "8504512617",
+        "8509269529",
+        "8516564634",
+        "8526822006",
+        "8527677940",
+        "8527709078",
+        "8537508532",
+        "8554019908",
+        "8554687393",
+        "8578379000",
+        "8579652794",
+        "8581307963",
+        "8581616456",
+        "8585519925",
+        "8595251002",
+        "8595418789",
+        "8595619039",
+        "8621188966",
+        "8621670992",
+        "8639516800",
+        "8639586245",
+        "8639706199"
+      ]
+    },
+    {
+      "key": "sneakers",
+      "name": "Кроссовки",
+      "category": "odezhda_obuv_aksessuary",
+      "total_found": 622814,
+      "count_returned": 50,
+      "unique_count": 50,
+      "credits_used": 5,
+      "ids": [
+        "8412089386",
+        "8412798936",
+        "8424022065",
+        "8428775191",
+        "8434303668",
+        "8434614479",
+        "8436387682",
+        "8436827118",
+        "8462226131",
+        "8462676422",
+        "8463880607",
+        "8463948797",
+        "8464994530",
+        "8465438114",
+        "8465736141",
+        "8474494327",
+        "8474808190",
+        "8487232968",
+        "8501165078",
+        "8501479422",
+        "8501634855",
+        "8504074099",
+        "8504276704",
+        "8504588620",
+        "8509093459",
+        "8516192382",
+        "8516567844",
+        "8526883222",
+        "8527284438",
+        "8527504682",
+        "8527766544",
+        "8534112626",
+        "8555587839",
+        "8555713944",
+        "8555775029",
+        "8578126354",
+        "8578979476",
+        "8579097644",
+        "8579098438",
+        "8581026103",
+        "8585777795",
+        "8594978925",
+        "8595141943",
+        "8595627099",
+        "8595686414",
+        "8608066130",
+        "8608746480",
+        "8620842887",
+        "8621505371",
+        "8621631908"
+      ]
+    },
+    {
+      "key": "winter_jackets",
+      "name": "Зимние куртки",
+      "category": "odezhda_obuv_aksessuary",
+      "total_found": 369948,
+      "count_returned": 49,
+      "unique_count": 49,
+      "credits_used": 5,
+      "ids": [
+        "8412178308",
+        "8412182590",
+        "8423862518",
+        "8423909336",
+        "8424293040",
+        "8424302361",
+        "8428014432",
+        "8433868872",
+        "8436055987",
+        "8436489515",
+        "8462455072",
+        "8465732420",
+        "8474430167",
+        "8477964366",
+        "8478150484",
+        "8486511746",
+        "8486996327",
+        "8501037638",
+        "8501801341",
+        "8504527970",
+        "8509621068",
+        "8516259152",
+        "8516440639",
+        "8527113164",
+        "8527632266",
+        "8527736045",
+        "8553877870",
+        "8554446562",
+        "8555712234",
+        "8555757501",
+        "8567468070",
+        "8578233031",
+        "8578705842",
+        "8579609225",
+        "8581603392",
+        "8581622068",
+        "8581779052",
+        "8585073642",
+        "8594923834",
+        "8608320039",
+        "8608603393",
+        "8608666071",
+        "8620817734",
+        "8621058147",
+        "8621403634",
+        "8621486118",
+        "8639359182",
+        "8641589236",
+        "8641733203"
+      ]
+    },
+    {
+      "key": "tv",
+      "name": "Телевизоры",
+      "category": "bytovaya_elektronika",
+      "total_found": 90120,
+      "count_returned": 50,
+      "unique_count": 50,
+      "credits_used": 5,
+      "ids": [
+        "8424223487",
+        "8434287918",
+        "8436315527",
+        "8436571160",
+        "8443555679",
+        "8443581043",
+        "8443759973",
+        "8462533138",
+        "8463963462",
+        "8464342786",
+        "8464935372",
+        "8465040134",
+        "8465528786",
+        "8474113109",
+        "8474335211",
+        "8474757410",
+        "8477962667",
+        "8478435818",
+        "8478543480",
+        "8486228757",
+        "8487474187",
+        "8500850156",
+        "8500887536",
+        "8504531620",
+        "8504801932",
+        "8516504031",
+        "8526870853",
+        "8527392707",
+        "8534335184",
+        "8537170971",
+        "8537429187",
+        "8554201451",
+        "8555154713",
+        "8555299471",
+        "8567707827",
+        "8578002860",
+        "8578622899",
+        "8578732695",
+        "8579228958",
+        "8579235169",
+        "8581290989",
+        "8595003078",
+        "8620881111",
+        "8621009366",
+        "8621222573",
+        "8621269677",
+        "8621458524",
+        "8638843058",
+        "8640924088",
+        "8641629697"
+      ]
+    }
+  ],
+  "total_found": 1216434,
+  "count_returned": 248,
   "listings": [
     {
-      "id": 8436665487,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_17_pro_max_256_gb_sim_esim_8436665487",
-      "title": "iPhone 17 Pro Max, 256 ГБ, SIM + eSIM",
-      "price": 82000,
-      "location": "Москва"
+      "id": "8516093121",
+      "title": "iPhone 18 Pro, 512 ГБ, SIM + eSIM",
+      "price": 137990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_512_gb_sim_esim_8516093121",
+      "published": "2026-11-28T07:56:12.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8621393275,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_13_128_gb_1_sim_8621393275",
-      "title": "iPhone 13, 128 ГБ, 1 SIM",
-      "price": 10500
+      "id": "8536996624",
+      "title": "iPhone 18 Pro, 512 ГБ, SIM + eSIM",
+      "price": 138990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_512_gb_sim_esim_8536996624",
+      "published": "2026-11-28T07:55:14.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8464769920,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_16_pro_max_256_gb_sim_esim_8464769920",
-      "title": "iPhone 16 Pro Max, 256 ГБ, SIM + eSIM",
-      "price": 55000,
-      "location": "Москва"
+      "id": "8509281487",
+      "title": "iPhone 17, 256 ГБ, SIM + eSIM",
+      "price": 65990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_17_256_gb_sim_esim_8509281487",
+      "published": "2026-11-28T07:55:04.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8465437780,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_max_256_gb_esim_8465437780",
-      "title": "iPhone 18 Pro Max, 256 ГБ, eSIM",
-      "price": 133410,
-      "location": "Москва"
+      "id": "8567147775",
+      "title": "iPhone 17 Pro, 256 ГБ, 2 SIM",
+      "price": 96990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_17_pro_256_gb_2_sim_8567147775",
+      "published": "2026-11-28T07:54:55.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8621552364,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_14_pro_max_256_gb_sim_esim_8621552364",
-      "title": "iPhone 14 Pro Max, 256 ГБ, SIM + eSIM",
-      "price": 34000,
-      "location": "Москва"
+      "id": "8427966472",
+      "title": "iPhone 18 Pro, 512 ГБ, SIM + eSIM",
+      "price": 119590,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_512_gb_sim_esim_8427966472",
+      "published": "2026-11-28T07:54:55.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8412781671,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_15_pro_256_gb_2_sim_8412781671",
-      "title": "iPhone 15 Pro, 256 ГБ, 2 SIM",
-      "price": 41000,
-      "location": "Москва"
+      "id": "8464277056",
+      "title": "iPhone 14 Pro, 128 ГБ",
+      "price": 48390,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_14_pro_128_gb_8464277056",
+      "published": "2026-11-28T07:54:37.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8537239741,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_16_128_gb_1_sim_8537239741",
-      "title": "iPhone 16, 128 ГБ, 1 SIM",
-      "price": 32000
+      "id": "8527559158",
+      "title": "iPhone 17, 256 ГБ, eSIM",
+      "price": 71990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_17_256_gb_esim_8527559158",
+      "published": "2026-11-28T07:54:32.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8553981011,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_15_pro_max_512_gb_esim_8553981011",
-      "title": "iPhone 15 Pro Max, 512 ГБ, eSIM",
-      "price": 40000
+      "id": "8639146570",
+      "title": "iPhone 17 Pro Max, 512 ГБ",
+      "price": 100890,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_17_pro_max_512_gb_8639146570",
+      "published": "2026-11-28T07:54:15.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8584816566,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_17_pro_max_256_gb_sim_esim_8584816566",
-      "title": "iPhone 17 Pro Max, 256 ГБ, SIM + eSIM",
-      "price": 75000,
-      "location": "Москва"
+      "id": "8537470946",
+      "title": "iPhone 17, 512 ГБ, SIM + eSIM",
+      "price": 68890,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_17_512_gb_sim_esim_8537470946",
+      "published": "2026-11-28T07:54:01.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8474491200,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_17_pro_max_1_tb_sim_esim_8474491200",
-      "title": "iPhone 17 Pro Max, 1 ТБ, SIM + eSIM",
-      "price": 98500,
-      "location": "Москва"
+      "id": "8485863932",
+      "title": "iPhone 17 Pro, 256 ГБ, eSIM",
+      "price": 78390,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_17_pro_256_gb_esim_8485863932",
+      "published": "2026-11-28T07:54:01.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8487002462,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_16_pro_max_1_tb_sim_esim_8487002462",
-      "title": "iPhone 16 Pro Max, 1 ТБ, SIM + eSIM",
-      "price": 80000
+      "id": "8424773861",
+      "title": "iPhone 18 Pro, 512 ГБ, eSIM",
+      "price": 130490,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_512_gb_esim_8424773861",
+      "published": "2026-11-28T07:53:37.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8485966433,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_16_pro_max_256_gb_sim_esim_8485966433",
+      "id": "8639506251",
+      "title": "iPhone 13 Pro Max, 128 ГБ, SIM + eSIM",
+      "price": 29000,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_13_pro_max_128_gb_sim_esim_8639506251",
+      "published": "2026-11-28T07:53:03.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
+    },
+    {
+      "id": "8504608555",
+      "title": "iPhone 18 Pro, 512 ГБ, eSIM",
+      "price": 134990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_512_gb_esim_8504608555",
+      "published": "2026-11-28T07:52:22.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
+    },
+    {
+      "id": "8509496979",
+      "title": "iPhone 15 Pro Max, 1 ТБ, SIM + eSIM",
+      "price": 56990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_15_pro_max_1_tb_sim_esim_8509496979",
+      "published": "2026-11-28T07:51:55.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
+    },
+    {
+      "id": "8554770780",
+      "title": "iPhone 18 Pro, 512 ГБ, eSIM",
+      "price": 129990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_512_gb_esim_8554770780",
+      "published": "2026-11-28T07:51:21.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
+    },
+    {
+      "id": "8461936326",
+      "title": "iPhone 15 Pro Max, 512 ГБ, SIM + eSIM",
+      "price": 52000,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_15_pro_max_512_gb_sim_esim_8461936326",
+      "published": "2026-11-28T07:50:57.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
+    },
+    {
+      "id": "8464099688",
+      "title": "iPhone 18 Pro, 512 ГБ, eSIM",
+      "price": 131490,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_512_gb_esim_8464099688",
+      "published": "2026-11-28T07:50:15.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
+    },
+    {
+      "id": "8555182233",
+      "title": "iPhone 14 Pro Max, 512 ГБ, SIM + eSIM",
+      "price": 39990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_14_pro_max_512_gb_sim_esim_8555182233",
+      "published": "2026-11-28T07:49:21.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
+    },
+    {
+      "id": "8478009142",
+      "title": "iPhone 13 Pro Max, 128 ГБ, SIM + eSIM",
+      "price": 26290,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_13_pro_max_128_gb_sim_esim_8478009142",
+      "published": "2026-11-28T07:48:55.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
+    },
+    {
+      "id": "8509155126",
       "title": "iPhone 16 Pro Max, 256 ГБ, SIM + eSIM",
       "price": 60000,
-      "location": "Москва"
+      "url": "https://www.avito.ru/moskva/telefony/iphone_16_pro_max_256_gb_sim_esim_8509155126",
+      "published": "2026-11-28T07:47:07.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8584948555,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_17_pro_max_256_gb_sim_esim_8584948555",
-      "title": "iPhone 17 Pro Max, 256 ГБ, SIM + eSIM",
-      "price": 82000,
-      "location": "Москва"
+      "id": "8516375038",
+      "title": "iPhone 18 Pro Max, 256 ГБ, SIM + eSIM",
+      "price": 128990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_max_256_gb_sim_esim_8516375038",
+      "published": "2026-11-28T07:46:24.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8621257600,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_13_pro_512_gb_2_sim_8621257600",
-      "title": "iPhone 13 Pro, 512 ГБ, 2 SIM",
-      "price": 13000
+      "id": "8486056366",
+      "title": "iPhone X, 256 ГБ, 1 SIM",
+      "price": 13500,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_x_256_gb_1_sim_8486056366",
+      "published": "2026-11-28T07:46:21.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8579519078,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_13_pro_256_gb_sim_esim_8579519078",
-      "title": "iPhone 13 Pro, 256 ГБ, SIM + eSIM",
-      "price": 27990
+      "id": "8585584056",
+      "title": "iPhone 17e, 512 ГБ, eSIM",
+      "price": 54999,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_17e_512_gb_esim_8585584056",
+      "published": "2026-11-28T07:45:54.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8554872091,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_16_pro_256_gb_sim_esim_8554872091",
-      "title": "iPhone 16 Pro, 256 ГБ, SIM + eSIM",
-      "price": 51000,
-      "location": "Москва"
+      "id": "8608700420",
+      "title": "iPhone 13 Pro, 512 ГБ, 1 SIM",
+      "price": 35000,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_13_pro_512_gb_1_sim_8608700420",
+      "published": "2026-11-28T07:45:04.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8579071619,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_duo_512_gb_esim_8579071619",
-      "title": "iPhone Duo, 512 ГБ, eSIM",
-      "price": 217000,
-      "location": "Москва"
+      "id": "8579099949",
+      "title": "iPhone 18 Pro Max, 256 ГБ, SIM + eSIM",
+      "price": 124490,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_max_256_gb_sim_esim_8579099949",
+      "published": "2026-11-28T07:44:38.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8581175134,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_17_pro_256_gb_sim_esim_8581175134",
-      "title": "iPhone 17 Pro, 256 ГБ, SIM + eSIM",
-      "price": 76000,
-      "location": "Москва"
+      "id": "8501813864",
+      "title": "iPhone 17 Pro, 256 ГБ, eSIM",
+      "price": 78000,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_17_pro_256_gb_esim_8501813864",
+      "published": "2026-11-28T07:44:46.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8579052301,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_11_128_gb_8579052301",
-      "title": "iPhone 11, 128 ГБ",
-      "price": 2000,
-      "location": "Москва"
+      "id": "8581027110",
+      "title": "iPhone 18 Pro Max, 256 ГБ, SIM + eSIM",
+      "price": 125490,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_max_256_gb_sim_esim_8581027110",
+      "published": "2026-11-28T07:43:34.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8641183941,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_13_pro_128_gb_sim_esim_8641183941",
-      "title": "iPhone 13 Pro, 128 ГБ, SIM + eSIM",
-      "price": 25000,
-      "location": "Москва"
+      "id": "8581772495",
+      "title": "iPhone 16 Plus, 256 ГБ, SIM + eSIM",
+      "price": 44990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_16_plus_256_gb_sim_esim_8581772495",
+      "published": "2026-11-28T07:43:15.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8579159000,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_16_128_gb_sim_esim_8579159000",
-      "title": "iPhone 16, 128 ГБ, SIM + eSIM",
-      "price": 47990
+      "id": "8579461250",
+      "title": "iPhone 18 Pro Max, 256 ГБ, SIM + eSIM",
+      "price": 129990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_max_256_gb_sim_esim_8579461250",
+      "published": "2026-11-28T07:42:12.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8434489601,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_16_128_gb_esim_8434489601",
-      "title": "iPhone 16, 128 ГБ, eSIM",
-      "price": 46000,
-      "location": "Москва"
-    },
-    {
-      "id": 8555241648,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_11_128_gb_sim_esim_8555241648",
-      "title": "iPhone 11, 128 ГБ, SIM + eSIM",
-      "price": 8000
-    },
-    {
-      "id": 8577867352,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_17_pro_512_gb_sim_esim_8577867352",
-      "title": "iPhone 17 Pro, 512 ГБ, SIM + eSIM",
-      "price": 80000,
-      "location": "Москва"
-    },
-    {
-      "id": 8621527196,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_15_pro_max_256_gb_esim_8621527196",
-      "title": "iPhone 15 Pro Max, 256 ГБ, eSIM",
-      "price": 49500,
-      "location": "Москва"
-    },
-    {
-      "id": 8579493073,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_16_pro_max_256_gb_sim_esim_8579493073",
+      "id": "8461884504",
       "title": "iPhone 16 Pro Max, 256 ГБ, SIM + eSIM",
-      "price": 55000,
-      "location": "Москва"
+      "price": 64000,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_16_pro_max_256_gb_sim_esim_8461884504",
+      "published": "2026-11-28T07:42:15.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8428774248,
-      "url": "https://www.avito.ru/moskva_zelenograd/telefony/iphone_17_256_gb_sim_esim_8428774248",
-      "title": "iPhone 17, 256 ГБ, SIM + eSIM",
-      "price": 66000,
-      "location": "Зеленоград"
+      "id": "8434768673",
+      "title": "iPhone Air, 256 ГБ, eSIM",
+      "price": 63500,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_air_256_gb_esim_8434768673",
+      "published": "2026-11-28T07:41:56.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8584901607,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_16_pro_max_512_gb_sim_esim_8584901607",
-      "title": "iPhone 16 Pro Max, 512 ГБ, SIM + eSIM",
-      "price": 65500,
-      "location": "Москва"
+      "id": "8581489160",
+      "title": "iPhone 18 Pro Max, 256 ГБ, eSIM",
+      "price": 116490,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_max_256_gb_esim_8581489160",
+      "published": "2026-11-28T07:42:51.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8608492851,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_15_pro_max_256_gb_sim_esim_8608492851",
+      "id": "8412173363",
+      "title": "iPhone 17 Pro Max, 512 ГБ, SIM + eSIM",
+      "price": 96000,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_17_pro_max_512_gb_sim_esim_8412173363",
+      "published": "2026-11-28T07:39:10.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
+    },
+    {
+      "id": "8595571035",
+      "title": "iPhone 18 Pro Max, 256 ГБ, eSIM",
+      "price": 115490,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_max_256_gb_esim_8595571035",
+      "published": "2026-11-28T07:37:41.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
+    },
+    {
+      "id": "8434787657",
+      "title": "iPhone 11 Pro Max, 256 ГБ, SIM + eSIM",
+      "price": 14500,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_11_pro_max_256_gb_sim_esim_8434787657",
+      "published": "2026-11-28T07:36:00.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
+    },
+    {
+      "id": "8537694509",
+      "title": "iPhone 18 Pro Max, 256 ГБ, eSIM",
+      "price": 116490,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_max_256_gb_esim_8537694509",
+      "published": "2026-11-28T07:35:28.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
+    },
+    {
+      "id": "8434581550",
+      "title": "iPhone 18 Pro Max, 256 ГБ, eSIM",
+      "price": 118990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_max_256_gb_esim_8434581550",
+      "published": "2026-11-28T07:34:22.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
+    },
+    {
+      "id": "8412007097",
+      "title": "iPhone 18 Pro Max, 512 ГБ, eSIM",
+      "price": 140500,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_max_512_gb_esim_8412007097",
+      "published": "2026-11-28T07:33:17.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
+    },
+    {
+      "id": "8516588483",
       "title": "iPhone 15 Pro Max, 256 ГБ, SIM + eSIM",
       "price": 48000,
-      "location": "Москва"
+      "url": "https://www.avito.ru/moskva/telefony/iphone_15_pro_max_256_gb_sim_esim_8516588483",
+      "published": "2026-11-28T07:28:13.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8555576780,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_14_512_gb_8555576780",
-      "title": "iPhone 14, 512 ГБ",
-      "price": 35990
+      "id": "8537303450",
+      "title": "iPhone 14 Pro Max, 256 ГБ, SIM + eSIM",
+      "price": 34990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_14_pro_max_256_gb_sim_esim_8537303450",
+      "published": "2026-11-28T07:24:16.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8424558054,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_13_256_gb_8424558054",
-      "title": "iPhone 13, 256 ГБ",
-      "price": 28990
+      "id": "8462259393",
+      "title": "iPhone 17 Pro, 256 ГБ, eSIM",
+      "price": 86490,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_17_pro_256_gb_esim_8462259393",
+      "published": "2026-11-28T07:21:40.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8487668577,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_14_pro_max_256_gb_8487668577",
-      "title": "iPhone 14 Pro Max, 256 ГБ",
-      "price": 45990
+      "id": "8584842503",
+      "title": "iPhone 18 Pro, 256 ГБ, SIM + eSIM",
+      "price": 115990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_256_gb_sim_esim_8584842503",
+      "published": "2026-11-28T07:21:25.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8478748519,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_13_pro_max_256_gb_8478748519",
-      "title": "iPhone 13 Pro Max, 256 ГБ",
-      "price": 40990
+      "id": "8487113507",
+      "title": "iPhone 18 Pro Max, 512 ГБ, eSIM",
+      "price": 146000,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_max_512_gb_esim_8487113507",
+      "published": "2026-11-28T07:26:50.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8478194292,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_16_pro_max_512_gb_8478194292",
-      "title": "iPhone 16 Pro Max, 512 ГБ",
-      "price": 84990
+      "id": "8639445846",
+      "title": "iPhone 18 Pro, 256 ГБ, SIM + eSIM",
+      "price": 115990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_256_gb_sim_esim_8639445846",
+      "published": "2026-11-28T07:20:23.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8621314096,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_16_pro_max_256_gb_8621314096",
-      "title": "iPhone 16 Pro Max, 256 ГБ",
-      "price": 79990
-    },
-    {
-      "id": 8534302417,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_air_512_gb_esim_8534302417",
-      "title": "iPhone Air, 512 ГБ, eSIM",
-      "price": 70000,
-      "location": "Москва"
-    },
-    {
-      "id": 8563783562,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_11_128_gb_sim_esim_8563783562",
-      "title": "iPhone 11, 128 ГБ, SIM + eSIM",
-      "price": 6500,
-      "location": "Москва"
-    },
-    {
-      "id": 8487361989,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_17_pro_1_tb_esim_8487361989",
-      "title": "iPhone 17 Pro, 1 ТБ, eSIM",
-      "price": 128090,
-      "location": "Москва"
-    },
-    {
-      "id": 8484682798,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_13_pro_max_256_gb_sim_esim_8484682798",
-      "title": "iPhone 13 Pro Max, 256 ГБ, SIM + eSIM",
-      "price": 30000
-    },
-    {
-      "id": 8501220913,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_13_pro_max_256_gb_sim_esim_8501220913",
-      "title": "iPhone 13 Pro Max, 256 ГБ, SIM + eSIM",
-      "price": 27000,
-      "location": "Москва"
-    },
-    {
-      "id": 8465818633,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_17_pro_256_gb_sim_esim_8465818633",
-      "title": "iPhone 17 Pro, 256 ГБ, SIM + eSIM",
-      "price": 75000,
-      "location": "Москва"
-    },
-    {
-      "id": 8639184029,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_12_pro_max_256_gb_sim_esim_8639184029",
-      "title": "iPhone 12 Pro Max, 256 ГБ, SIM + eSIM",
-      "price": 7000
-    },
-    {
-      "id": 8412199705,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_16_pro_max_256_gb_esim_8412199705",
-      "title": "iPhone 16 Pro Max, 256 ГБ, eSIM",
-      "price": 53000,
-      "location": "Москва"
-    },
-    {
-      "id": 8435857571,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_max_256_gb_esim_8435857571",
-      "title": "iPhone 18 Pro Max, 256 ГБ, eSIM",
-      "price": 124600
-    },
-    {
-      "id": 8577861968,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_13_mini_128_gb_sim_esim_8577861968",
-      "title": "iPhone 13 mini, 128 ГБ, SIM + eSIM",
-      "price": 13500
-    },
-    {
-      "id": 8501279664,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_13_pro_256_gb_sim_esim_8501279664",
+      "id": "8428244223",
       "title": "iPhone 13 Pro, 256 ГБ, SIM + eSIM",
-      "price": 27000,
-      "location": "Москва"
+      "price": 22000,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_13_pro_256_gb_sim_esim_8428244223",
+      "published": "2026-11-28T07:21:28.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8483903412,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_5_16_gb_8483903412",
-      "title": "iPhone 5, 16 ГБ",
-      "price": 1000,
-      "location": "Москва"
+      "id": "8555140897",
+      "title": "iPhone 18 Pro Max, 256 ГБ, SIM + eSIM",
+      "price": 104990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_max_256_gb_sim_esim_8555140897",
+      "published": "2026-11-28T07:19:19.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8442980549,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_13_pro_max_256_gb_sim_esim_8442980549",
-      "title": "iPhone 13 Pro Max, 256 ГБ, SIM + eSIM",
-      "price": 44999
+      "id": "8578086581",
+      "title": "iPhone 18 Pro, 256 ГБ, SIM + eSIM",
+      "price": 116990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_256_gb_sim_esim_8578086581",
+      "published": "2026-11-28T07:19:15.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8464282760,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_14_pro_512_gb_2_sim_8464282760",
-      "title": "iPhone 14 Pro, 512 ГБ, 2 SIM",
-      "price": 20000
+      "id": "8434051907",
+      "title": "iPhone 18 Pro Max, 256 ГБ, SIM + eSIM",
+      "price": 104990,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_max_256_gb_sim_esim_8434051907",
+      "published": "2026-11-28T07:18:24.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
     },
     {
-      "id": 8534301467,
-      "url": "https://www.avito.ru/moskva/telefony/iphone_13_256_gb_sim_esim_8534301467",
-      "title": "iPhone 13, 256 ГБ, SIM + eSIM",
-      "price": 16990
+      "id": "8621615672",
+      "title": "iPhone 18 Pro, 256 ГБ, SIM + eSIM",
+      "price": 117490,
+      "url": "https://www.avito.ru/moskva/telefony/iphone_18_pro_256_gb_sim_esim_8621615672",
+      "published": "2026-11-28T07:22:24.000Z",
+      "search_group": "iphone",
+      "search_name": "iPhone",
+      "search_groups": [
+        "iphone"
+      ]
+    },
+    {
+      "id": "8581307963",
+      "title": "Ноутбук Sony маленький",
+      "price": 2000,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_sony_malenkiy_8581307963",
+      "published": "2026-11-28T07:51:42.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8427881496",
+      "title": "Ноутбук asus x54",
+      "price": 1500,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_asus_x54_8427881496",
+      "published": "2026-11-28T07:50:24.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8554687393",
+      "title": "Ноутбук нужен Есть из чего выбрать",
+      "price": 17900,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_nuzhen_est_iz_chego_vybrat_8554687393",
+      "published": "2026-11-28T07:49:16.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8486537810",
+      "title": "Ретро ноутбук RoverBook Green 550 нерабочий",
+      "price": 2100,
+      "url": "https://www.avito.ru/moskva/noutbuki/retro_noutbuk_roverbook_green_550_nerabochiy_8486537810",
+      "published": "2026-11-28T07:47:05.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8462150730",
+      "title": "Ноутбук Asus K501",
+      "price": 6000,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_asus_k501_8462150730",
+      "published": "2026-11-28T07:41:26.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8442957757",
+      "title": "Macbook pro 13 2020 16/512 гб",
+      "price": 34000,
+      "url": "https://www.avito.ru/moskva/noutbuki/macbook_pro_13_2020_16512_gb_8442957757",
+      "published": "2026-11-28T07:40:56.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8621188966",
+      "title": "Ноутбук asus x550c",
+      "price": 1500,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_asus_x550c_8621188966",
+      "published": "2026-11-28T07:45:20.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8487777428",
+      "title": "MacBook Pro 13 m2 8/256 комплект",
+      "price": 56000,
+      "url": "https://www.avito.ru/moskva/noutbuki/macbook_pro_13_m2_8256_komplekt_8487777428",
+      "published": "2026-11-28T07:40:17.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8639516800",
+      "title": "Apple macbook pro 13",
+      "price": 4000,
+      "url": "https://www.avito.ru/moskva/noutbuki/apple_macbook_pro_13_8639516800",
+      "published": "2026-11-28T07:16:36.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8477829155",
+      "title": "Ноутбук HP ProBook 4 G1i D0VG1ET",
+      "price": 105340,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_hp_probook_4_g1i_d0vg1et_8477829155",
+      "published": "2026-11-28T07:00:32.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8434536818",
+      "title": "Ноутбук Huawei MateBook 14 flmh-X 53014QLE",
+      "price": 183530,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_huawei_matebook_14_flmh-x_53014qle_8434536818",
+      "published": "2026-11-28T07:00:28.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8504242990",
+      "title": "Ноутбук Apple MacBook Air 15.3 M4 16 гб 256",
+      "price": 156980,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_apple_macbook_air_15.3_m4_16_gb_256_8504242990",
+      "published": "2026-11-28T07:00:28.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8537508532",
+      "title": "Ноутбук asus VivoBook S16 S3607AA-SH112",
+      "price": 143510,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_asus_vivobook_s16_s3607aa-sh112_8537508532",
+      "published": "2026-11-28T07:00:28.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8578379000",
+      "title": "Ноутбук Acer Aspire Lite 15 AL15-36P-37A4 15.6 IPS",
+      "price": 52790,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_acer_aspire_lite_15_al15-36p-37a4_15.6_ips_8578379000",
+      "published": "2026-11-28T07:00:28.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8464464404",
+      "title": "Ноутбук Lenovo ThinkPad T14 Gen 6 Intel Core Ultra",
+      "price": 171690,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_lenovo_thinkpad_t14_gen_6_intel_core_ultra_8464464404",
+      "published": "2026-11-28T07:00:27.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8526822006",
+      "title": "Ноутбук Acer Aspire Lite 15 AL15-45P-R1UJ",
+      "price": 69760,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_acer_aspire_lite_15_al15-45p-r1uj_8526822006",
+      "published": "2026-11-28T07:00:35.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8461908475",
+      "title": "Ноутбук Acer Predator Helios Neo 16 PHN16-73-94ZR",
+      "price": 193680,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_acer_predator_helios_neo_16_phn16-73-94zr_8461908475",
+      "published": "2026-11-28T07:00:28.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8478104944",
+      "title": "Ноутбук Acer Extensa 15 EX215-55-37JW Intel Core",
+      "price": 53520,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_acer_extensa_15_ex215-55-37jw_intel_core_8478104944",
+      "published": "2026-11-28T07:00:28.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8501455221",
+      "title": "Ноутбук Apple MacBook Pro 16 2024 M4 14-Core",
+      "price": 292060,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_apple_macbook_pro_16_2024_m4_14-core_8501455221",
+      "published": "2026-11-28T07:00:28.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8486773343",
+      "title": "Ноутбук Asus VivoBook S16 S3607AA-SH108",
+      "price": 158850,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_asus_vivobook_s16_s3607aa-sh108_8486773343",
+      "published": "2026-11-28T07:00:27.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8639586245",
+      "title": "Ноутбук Apple MacBook Pro 16 2026 MGE64HN/A",
+      "price": 416480,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_apple_macbook_pro_16_2026_mge64hna_8639586245",
+      "published": "2026-11-28T07:00:39.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8412714244",
+      "title": "Ноутбук Apple MacBook Pro 16 2026 MGE44HN/A",
+      "price": 340500,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_apple_macbook_pro_16_2026_mge44hna_8412714244",
+      "published": "2026-11-28T07:00:23.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8428451116",
+      "title": "Ноутбук Lenovo IdeaPad Slim 3 15IRH10 83K100csrm",
+      "price": 92170,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_lenovo_ideapad_slim_3_15irh10_83k100csrm_8428451116",
+      "published": "2026-11-28T07:00:28.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8501309689",
+      "title": "Ноутбук Lenovo Legion Pro 7 16IAX10H Intel Core",
+      "price": 454490,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_lenovo_legion_pro_7_16iax10h_intel_core_8501309689",
+      "published": "2026-11-28T07:00:28.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8595619039",
+      "title": "Ноутбук MSI Prestige 14 AI+ Evo C2VMG Ultra 7",
+      "price": 163630,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_msi_prestige_14_ai_evo_c2vmg_ultra_7_8595619039",
+      "published": "2026-11-28T07:00:23.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8621670992",
+      "title": "Ноутбук HP ProBook 4 G1i AT7K2AV",
+      "price": 103470,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_hp_probook_4_g1i_at7k2av_8621670992",
+      "published": "2026-11-28T07:00:28.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8639706199",
+      "title": "Ноутбук asus TUF F16 FX608JP i5-13450HX 16гб 1тб",
+      "price": 185380,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_asus_tuf_f16_fx608jp_i5-13450hx_16gb_1tb_8639706199",
+      "published": "2026-11-28T07:00:22.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8434393137",
+      "title": "Ноутбук Apple MacBook Pro 16 2026 mgec4HN/A",
+      "price": 440500,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_apple_macbook_pro_16_2026_mgec4hna_8434393137",
+      "published": "2026-11-28T07:00:21.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8464355150",
+      "title": "Ноутбук Asus TUF Gaming A16 FA608UMI-TU172",
+      "price": 172450,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_asus_tuf_gaming_a16_fa608umi-tu172_8464355150",
+      "published": "2026-11-28T07:00:26.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8554019908",
+      "title": "Ноутбук MSI Raider 16 Max HX B2WI 9S7-265111-030",
+      "price": 390760,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_msi_raider_16_max_hx_b2wi_9s7-265111-030_8554019908",
+      "published": "2026-11-28T07:00:21.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8424104136",
+      "title": "Ноутбук Apple MacBook Pro 16 2026 mgea4HN/A",
+      "price": 340500,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_apple_macbook_pro_16_2026_mgea4hna_8424104136",
+      "published": "2026-11-28T07:00:22.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8424462465",
+      "title": "Ноутбук Dell Pro 16 Plus Pro16Plus-5151",
+      "price": 120270,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_dell_pro_16_plus_pro16plus-5151_8424462465",
+      "published": "2026-11-28T07:00:22.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8436377110",
+      "title": "Ноутбук Apple MacBook Pro 14 M4 Max 16-Core 48GB",
+      "price": 373600,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_apple_macbook_pro_14_m4_max_16-core_48gb_8436377110",
+      "published": "2026-11-28T07:00:26.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8487459288",
+      "title": "Ноутбук Apple MacBook Air 13.6 M2 16/512GB Liquid",
+      "price": 80290,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_apple_macbook_air_13.6_m2_16512gb_liquid_8487459288",
+      "published": "2026-11-28T07:00:25.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8527709078",
+      "title": "Ноутбук Lenovo ThinkPad X1 2-in-1 Gen 9 Ultra 7",
+      "price": 273010,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_lenovo_thinkpad_x1_2-in-1_gen_9_ultra_7_8527709078",
+      "published": "2026-11-28T07:00:21.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8579652794",
+      "title": "Ноутбук Apple MacBook Air 15 M4 16/512 гб голубой",
+      "price": 155430,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_apple_macbook_air_15_m4_16512_gb_goluboy_8579652794",
+      "published": "2026-11-28T07:00:21.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8585519925",
+      "title": "Ноутбук Lenovo ThinkBook 14 G8 IAL Ultra 7 255H",
+      "price": 160090,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_lenovo_thinkbook_14_g8_ial_ultra_7_255h_8585519925",
+      "published": "2026-11-28T07:00:21.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8424636234",
+      "title": "Ноутбук Apple MacBook Air 15 M4 10-ядерный 16 гб",
+      "price": 155430,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_apple_macbook_air_15_m4_10-yadernyy_16_gb_8424636234",
+      "published": "2026-11-28T07:00:21.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8465340281",
+      "title": "Ноутбук Asus ExpertBook B9 oled B9403cvar-PP1795X",
+      "price": 168850,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_asus_expertbook_b9_oled_b9403cvar-pp1795x_8465340281",
+      "published": "2026-11-28T07:00:28.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8486211640",
+      "title": "Ноутбук MSI Modern 16S G3MG 9S7-26U321-018",
+      "price": 80790,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_msi_modern_16s_g3mg_9s7-26u321-018_8486211640",
+      "published": "2026-11-28T07:00:23.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8487018999",
+      "title": "Ноутбук Dell Pro 14 Plus Pro14Plus-5113",
+      "price": 116130,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_dell_pro_14_plus_pro14plus-5113_8487018999",
+      "published": "2026-11-28T07:00:21.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8504512617",
+      "title": "Ноутбук Gigabyte gaming A16 GA63H AMD Ryzen 7 260",
+      "price": 121150,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_gigabyte_gaming_a16_ga63h_amd_ryzen_7_260_8504512617",
+      "published": "2026-11-28T07:00:22.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8527677940",
+      "title": "Ноутбук Lenovo ThinkPad X1 Carbon Gen 13 Intel",
+      "price": 219120,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_lenovo_thinkpad_x1_carbon_gen_13_intel_8527677940",
+      "published": "2026-11-28T07:00:21.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8595251002",
+      "title": "Ноутбук игровой Gigabyte Gaming A16 GA63H 16",
+      "price": 134350,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_igrovoy_gigabyte_gaming_a16_ga63h_16_8595251002",
+      "published": "2026-11-28T07:00:23.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8464775686",
+      "title": "Ноутбук MSI Prestige 16 Flip AI+ C3MTG",
+      "price": 264110,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_msi_prestige_16_flip_ai_c3mtg_8464775686",
+      "published": "2026-11-28T07:00:21.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8465175672",
+      "title": "Ноутбук MSI Raider 16 Max HX B2WJ 9S7-265111-031",
+      "price": 468090,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_msi_raider_16_max_hx_b2wj_9s7-265111-031_8465175672",
+      "published": "2026-11-28T07:00:21.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8509269529",
+      "title": "Ноутбук Apple MacBook Air 15 2025 M4 10 ядер 16 Гб",
+      "price": 133910,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_apple_macbook_air_15_2025_m4_10_yader_16_gb_8509269529",
+      "published": "2026-11-28T07:00:21.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8516564634",
+      "title": "Ноутбук Lenovo LOQ 15IRX10 i5-13450HX 16GB SSD",
+      "price": 157400,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_lenovo_loq_15irx10_i5-13450hx_16gb_ssd_8516564634",
+      "published": "2026-11-28T07:00:21.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8581616456",
+      "title": "Ноутбук Dell Pro 14 Pro14-5653 14.0 IPS FHD",
+      "price": 112320,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_dell_pro_14_pro14-5653_14.0_ips_fhd_8581616456",
+      "published": "2026-11-28T07:00:21.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8595418789",
+      "title": "Ноутбук CyberLine C150i-003 i5-12600H 16GB RTX",
+      "price": 104530,
+      "url": "https://www.avito.ru/moskva/noutbuki/noutbuk_cyberline_c150i-003_i5-12600h_16gb_rtx_8595418789",
+      "published": "2026-11-28T07:00:20.000Z",
+      "search_group": "laptops",
+      "search_name": "Ноутбуки",
+      "search_groups": [
+        "laptops"
+      ]
+    },
+    {
+      "id": "8581026103",
+      "title": "Кроссовки Nike Air Jordan 4",
+      "price": 3690,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_nike_air_jordan_4_8581026103",
+      "published": "2026-11-28T07:57:25.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8516567844",
+      "title": "Кроссовки Air Jordan 13 \"Total Black\" 41-45",
+      "price": 4290,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_air_jordan_13_total_black_41-45_8516567844",
+      "published": "2026-11-28T07:57:30.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8527284438",
+      "title": "Ботинки Timberland 6 inch черные 41-47",
+      "price": 4590,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/botinki_timberland_6_inch_chernye_41-47_8527284438",
+      "published": "2026-11-28T07:57:42.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8412089386",
+      "title": "Кроссовки Nike Correlate Black White",
+      "price": 2090,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_nike_correlate_black_white_8412089386",
+      "published": "2026-11-28T07:56:29.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8504074099",
+      "title": "Кроссовки nike air max 38",
+      "price": 490,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_nike_air_max_38_8504074099",
+      "published": "2026-11-28T07:56:16.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8608746480",
+      "title": "Сникерсы Puma Speedcat Wedge 36-41",
+      "price": 5490,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/snikersy_puma_speedcat_wedge_36-41_8608746480",
+      "published": "2026-11-28T07:55:23.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8527504682",
+      "title": "Кроссовки мужские нб 2002R Beige демисезон",
+      "price": 2900,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_muzhskie_nb_2002r_beige_demisezon_8527504682",
+      "published": "2026-11-28T07:55:23.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8463880607",
+      "title": "Кроссовки Miu Miu",
+      "price": 3296,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_miu_miu_8463880607",
+      "published": "2026-11-28T07:54:55.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8579097644",
+      "title": "Удобные кроссовки Asics 1090 Beige грей",
+      "price": 2890,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/udobnye_krossovki_asics_1090_beige_grey_8579097644",
+      "published": "2026-11-28T07:54:55.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8463948797",
+      "title": "Кеды aeronautica",
+      "price": 3790,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/kedy_aeronautica_8463948797",
+      "published": "2026-11-28T07:53:32.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8534112626",
+      "title": "Кроссовки мужские зимние",
+      "price": 2449,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_muzhskie_zimnie_8534112626",
+      "published": "2026-11-28T07:53:13.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8424022065",
+      "title": "Ботинки Timberland 6 inch premium черные 41-47",
+      "price": 9990,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/botinki_timberland_6_inch_premium_chernye_41-47_8424022065",
+      "published": "2026-11-28T07:52:49.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8578979476",
+      "title": "Кроссовки мужские Armani exchange",
+      "price": 2749,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_muzhskie_armani_exchange_8578979476",
+      "published": "2026-11-28T07:51:47.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8620842887",
+      "title": "Сникерсы Puma Speedcat Wedge 36-41",
+      "price": 5390,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/snikersy_puma_speedcat_wedge_36-41_8620842887",
+      "published": "2026-11-28T07:51:39.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8585777795",
+      "title": "Кроссовки Premiata Mase (41) оригинал",
+      "price": 12990,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_premiata_mase_41_original_8585777795",
+      "published": "2026-11-28T07:54:38.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8555713944",
+      "title": "Танцевальные кроссовки 35 размер черные",
+      "price": 900,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/tantsevalnye_krossovki_35_razmer_chernye_8555713944",
+      "published": "2026-11-28T07:54:37.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8509093459",
+      "title": "Salomon xt 6 gore tex Оригинал",
+      "price": 9990,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/salomon_xt_6_gore_tex_original_8509093459",
+      "published": "2026-11-28T07:51:34.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8474808190",
+      "title": "Кроссовки Мужские Зимние Puma",
+      "price": 2689,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_muzhskie_zimnie_puma_8474808190",
+      "published": "2026-11-28T07:50:06.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8465438114",
+      "title": "Bmai cordura",
+      "price": 4500,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/bmai_cordura_8465438114",
+      "published": "2026-11-28T07:50:29.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8462676422",
+      "title": "Кроссовки jordan 12 reverse flu game",
+      "price": 2990,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_jordan_12_reverse_flu_game_8462676422",
+      "published": "2026-11-28T07:49:00.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8464994530",
+      "title": "Кроссовки adidas samba",
+      "price": 2999,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_adidas_samba_8464994530",
+      "published": "2026-11-28T07:47:14.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8555587839",
+      "title": "Обувь мужская Нью Баланс 1906R Brown",
+      "price": 2900,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/obuv_muzhskaya_nyu_balans_1906r_brown_8555587839",
+      "published": "2026-11-28T07:47:03.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8595141943",
+      "title": "Кроссовки reebok женские 36 размер",
+      "price": 3295,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_reebok_zhenskie_36_razmer_8595141943",
+      "published": "2026-11-28T07:46:40.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8436387682",
+      "title": "Модные кроссовки Asics Kahana TR V4 Grey",
+      "price": 2799,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/modnye_krossovki_asics_kahana_tr_v4_grey_8436387682",
+      "published": "2026-11-28T07:46:30.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8504276704",
+      "title": "Зип Худи Dior Monogram ss26",
+      "price": 2490,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zip_hudi_dior_monogram_ss26_8504276704",
+      "published": "2026-11-28T07:45:31.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8504588620",
+      "title": "Кроссовки нб 574 Black Green с примеркой",
+      "price": 2699,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_nb_574_black_green_s_primerkoy_8504588620",
+      "published": "2026-11-28T07:45:23.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8621505371",
+      "title": "Кроссовки Nike Air Max Plus TN черные",
+      "price": 2821,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_nike_air_max_plus_tn_chernye_8621505371",
+      "published": "2026-11-28T07:45:16.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8434303668",
+      "title": "Сникерсы Puma Speedcat Wedge на руках",
+      "price": 5690,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/snikersy_puma_speedcat_wedge_na_rukah_8434303668",
+      "published": "2026-11-28T07:44:46.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8428775191",
+      "title": "Кроссовки Antonio Barezzi замша сетка 42",
+      "price": 5500,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_antonio_barezzi_zamsha_setka_42_8428775191",
+      "published": "2026-11-28T07:44:46.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8579098438",
+      "title": "Кроссовки New Balance 1906A Slate Grey",
+      "price": 5500,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_new_balance_1906a_slate_grey_8579098438",
+      "published": "2026-11-28T07:42:19.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8527766544",
+      "title": "Кроссовки Premiata Moerun (42) оригинал",
+      "price": 13990,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_premiata_moerun_42_original_8527766544",
+      "published": "2026-11-28T07:42:53.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8555775029",
+      "title": "Кроссовки Саломон SLab XT-6 черные демисезон",
+      "price": 2590,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_salomon_slab_xt-6_chernye_demisezon_8555775029",
+      "published": "2026-11-28T07:40:53.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8462226131",
+      "title": "Ботинки ralf ringer 40 размер новые женские",
+      "price": 6200,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/botinki_ralf_ringer_40_razmer_novye_zhenskie_8462226131",
+      "published": "2026-11-28T07:41:18.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8516192382",
+      "title": "Кроссовки TYR 46",
+      "price": 5550,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_tyr_46_8516192382",
+      "published": "2026-11-28T07:39:14.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8501479422",
+      "title": "Кроссовки New Balance 9060 Black",
+      "price": 3199,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_new_balance_9060_black_8501479422",
+      "published": "2026-11-28T07:38:43.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8487232968",
+      "title": "Модные кеды Найк Air Max TN блэк",
+      "price": 2500,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/modnye_kedy_nayk_air_max_tn_blek_8487232968",
+      "published": "2026-11-28T07:38:38.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8578126354",
+      "title": "Зип Худи Lonsdale big logo",
+      "price": 3590,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zip_hudi_lonsdale_big_logo_8578126354",
+      "published": "2026-11-28T07:38:38.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8526883222",
+      "title": "Кроссовки Premiata Moerun (41) оригинал",
+      "price": 11990,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_premiata_moerun_41_original_8526883222",
+      "published": "2026-11-28T07:39:54.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8621631908",
+      "title": "Кроссовки Puma черные 40",
+      "price": 4000,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_puma_chernye_40_8621631908",
+      "published": "2026-11-28T07:37:58.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8501165078",
+      "title": "Кроссовки мужские Merrell черные 41-46 размеры",
+      "price": 3475,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_muzhskie_merrell_chernye_41-46_razmery_8501165078",
+      "published": "2026-11-28T07:37:13.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8608066130",
+      "title": "Merrell gore-TEX",
+      "price": 4590,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/merrell_gore-tex_8608066130",
+      "published": "2026-11-28T07:47:15.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8434614479",
+      "title": "Кроссовки Dior b22",
+      "price": 4990,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_dior_b22_8434614479",
+      "published": "2026-11-28T07:37:14.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8594978925",
+      "title": "Кроссовки dior b22",
+      "price": 5490,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_dior_b22_8594978925",
+      "published": "2026-11-28T07:37:12.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8595627099",
+      "title": "Кроссовки dior b22",
+      "price": 5490,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_dior_b22_8595627099",
+      "published": "2026-11-28T07:37:11.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8595686414",
+      "title": "Dior B22",
+      "price": 5990,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/dior_b22_8595686414",
+      "published": "2026-11-28T07:37:20.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8412798936",
+      "title": "Кроссовки Reebok Zig Kinetica II Edge",
+      "price": 2490,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_reebok_zig_kinetica_ii_edge_8412798936",
+      "published": "2026-11-28T07:37:14.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8436827118",
+      "title": "Кроссовки Leitte",
+      "price": 2490,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_leitte_8436827118",
+      "published": "2026-11-28T07:37:12.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8465736141",
+      "title": "Кроссовки On Cloudsurfer Max",
+      "price": 4490,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_on_cloudsurfer_max_8465736141",
+      "published": "2026-11-28T07:37:13.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8474494327",
+      "title": "Кроссовки dior b22",
+      "price": 5490,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_dior_b22_8474494327",
+      "published": "2026-11-28T07:37:11.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8501634855",
+      "title": "Кроссовки dior b22",
+      "price": 5490,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/krossovki_dior_b22_8501634855",
+      "published": "2026-11-28T07:37:12.000Z",
+      "search_group": "sneakers",
+      "search_name": "Кроссовки",
+      "search_groups": [
+        "sneakers"
+      ]
+    },
+    {
+      "id": "8567468070",
+      "title": "Зимняя куртка Tommy Hilfiger",
+      "price": 5190,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zimnyaya_kurtka_tommy_hilfiger_8567468070",
+      "published": "2026-11-28T07:53:37.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8527632266",
+      "title": "Куртка зимняя 46-48",
+      "price": 1500,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/kurtka_zimnyaya_46-48_8527632266",
+      "published": "2026-11-28T07:54:17.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8527736045",
+      "title": "UGG стильный образ",
+      "price": 3290,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/ugg_stilnyy_obraz_8527736045",
+      "published": "2026-11-28T07:51:55.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8578705842",
+      "title": "Зимняя куртка Tommy Hilfiger",
+      "price": 5190,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zimnyaya_kurtka_tommy_hilfiger_8578705842",
+      "published": "2026-11-28T07:49:40.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8594923834",
+      "title": "Земная куртка пуховик 52",
+      "price": 2500,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zemnaya_kurtka_puhovik_52_8594923834",
+      "published": "2026-11-28T07:48:59.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8412178308",
+      "title": "Sheepskin UGG boots",
+      "price": 3299,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/sheepskin_ugg_boots_8412178308",
+      "published": "2026-11-28T07:48:31.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8516259152",
+      "title": "Куртка женская зимняя размер 50",
+      "price": 2200,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/kurtka_zhenskaya_zimnyaya_razmer_50_8516259152",
+      "published": "2026-11-28T07:47:08.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8424302361",
+      "title": "Много Новых зимних курток befree с бирками",
+      "price": 2999,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/mnogo_novyh_zimnih_kurtok_befree_s_birkami_8424302361",
+      "published": "2026-11-28T07:48:41.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8501801341",
+      "title": "Угги женские базовые",
+      "price": 3300,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/uggi_zhenskie_bazovye_8501801341",
+      "published": "2026-11-28T07:45:40.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8486511746",
+      "title": "Зимний пуховик куртка Prada чёрный S-2XL",
+      "price": 6590,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zimniy_puhovik_kurtka_prada_chernyy_s-2xl_8486511746",
+      "published": "2026-11-28T07:45:34.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8516440639",
+      "title": "Женская зимняя куртка the north face m пуховик",
+      "price": 700,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zhenskaya_zimnyaya_kurtka_the_north_face_m_puhovik_8516440639",
+      "published": "2026-11-28T07:43:54.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8608666071",
+      "title": "Куртка зимняя женская 42 44",
+      "price": 1888,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/kurtka_zimnyaya_zhenskaya_42_44_8608666071",
+      "published": "2026-11-28T07:43:24.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8579609225",
+      "title": "Куртка зимняя женская с меховым воротником",
+      "price": 5000,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/kurtka_zimnyaya_zhenskaya_s_mehovym_vorotnikom_8579609225",
+      "published": "2026-11-28T07:41:32.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8504527970",
+      "title": "Зимняя куртка Acne Studios на руках",
+      "price": 4490,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zimnyaya_kurtka_acne_studios_na_rukah_8504527970",
+      "published": "2026-11-28T07:41:46.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8608603393",
+      "title": "Зимняя куртка пуховик Arcteryx Gore-Tex",
+      "price": 4290,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zimnyaya_kurtka_puhovik_arcteryx_gore-tex_8608603393",
+      "published": "2026-11-28T07:40:53.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8428014432",
+      "title": "Пуховик Canada Goose черный с биркой",
+      "price": 4590,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/puhovik_canada_goose_chernyy_s_birkoy_8428014432",
+      "published": "2026-11-28T07:41:28.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8424293040",
+      "title": "Угги женские базовые",
+      "price": 3300,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/uggi_zhenskie_bazovye_8424293040",
+      "published": "2026-11-28T07:40:00.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8412182590",
+      "title": "Куртка-парка с меховым капюшоном Canadian",
+      "price": 10900,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/kurtka-parka_s_mehovym_kapyushonom_canadian_8412182590",
+      "published": "2026-11-28T07:39:47.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8527113164",
+      "title": "Куртка зимняя удлиненная с капюшоном 48",
+      "price": 2300,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/kurtka_zimnyaya_udlinennaya_s_kapyushonom_48_8527113164",
+      "published": "2026-11-28T07:38:43.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8423862518",
+      "title": "Зимняя куртка pull&Bear",
+      "price": 1540,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zimnyaya_kurtka_pullbear_8423862518",
+      "published": "2026-11-28T07:38:30.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8641589236",
+      "title": "Новая зимняя куртка Fine Joyce 54-58",
+      "price": 4290,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/novaya_zimnyaya_kurtka_fine_joyce_54-58_8641589236",
+      "published": "2026-11-28T07:36:29.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8555757501",
+      "title": "Куртка зимняя женская adidas 42",
+      "price": 549,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/kurtka_zimnyaya_zhenskaya_adidas_42_8555757501",
+      "published": "2026-11-28T07:36:36.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8555712234",
+      "title": "Куртка зимняя мужская",
+      "price": 1500,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/kurtka_zimnyaya_muzhskaya_8555712234",
+      "published": "2026-11-28T07:34:52.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8436489515",
+      "title": "Мужская зимняя куртка columbia",
+      "price": 2200,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_zimnyaya_kurtka_columbia_8436489515",
+      "published": "2026-11-28T07:31:56.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8578233031",
+      "title": "Мужской пуховик пальто geox M hallson coat",
+      "price": 16000,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskoy_puhovik_palto_geox_m_hallson_coat_8578233031",
+      "published": "2026-11-28T07:32:57.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8477964366",
+      "title": "Куртка зимняя женская",
+      "price": 824,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/kurtka_zimnyaya_zhenskaya_8477964366",
+      "published": "2026-11-28T07:31:01.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8581779052",
+      "title": "Пуховик Burberry Alaska Japanese type",
+      "price": 4390,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/puhovik_burberry_alaska_japanese_type_8581779052",
+      "published": "2026-11-28T07:31:52.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8581603392",
+      "title": "Новый пуховик Rains оригинал L/XL унисекс куртка",
+      "price": 40000,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/novyy_puhovik_rains_original_lxl_uniseks_kurtka_8581603392",
+      "published": "2026-11-28T07:28:02.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8509621068",
+      "title": "Зимние куртки Emporio Armani Premium",
+      "price": 5493,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zimnie_kurtki_emporio_armani_premium_8509621068",
+      "published": "2026-11-28T07:27:22.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8608320039",
+      "title": "Зимняя куртка мужская adidas",
+      "price": 4999,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zimnyaya_kurtka_muzhskaya_adidas_8608320039",
+      "published": "2026-11-28T07:25:12.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8585073642",
+      "title": "Куртка зимняя женская 52",
+      "price": 800,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/kurtka_zimnyaya_zhenskaya_52_8585073642",
+      "published": "2026-11-28T07:25:05.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8639359182",
+      "title": "Куртка зимняя с мехом",
+      "price": 2200,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/kurtka_zimnyaya_s_mehom_8639359182",
+      "published": "2026-11-28T07:22:37.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8486996327",
+      "title": "Куртка мужская зимняя 48-50 размер",
+      "price": 2000,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/kurtka_muzhskaya_zimnyaya_48-50_razmer_8486996327",
+      "published": "2026-11-28T07:22:09.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8621403634",
+      "title": "Куртка зимняя женская MaxRita, S, белая",
+      "price": 350,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/kurtka_zimnyaya_zhenskaya_maxrita_s_belaya_8621403634",
+      "published": "2026-11-28T07:22:38.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8621486118",
+      "title": "Мужские зимние перчатки на каждый день",
+      "price": 500,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskie_zimnie_perchatki_na_kazhdyy_den_8621486118",
+      "published": "2026-11-28T07:22:55.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8553877870",
+      "title": "Paul&Shark Typhoon Re-4x4 Stretch Пуховики L-4XL",
+      "price": 68000,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/paulshark_typhoon_re-4x4_stretch_puhoviki_l-4xl_8553877870",
+      "published": "2026-11-28T07:21:32.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8474430167",
+      "title": "Зимняя парка мужская/ подростковая",
+      "price": 3500,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zimnyaya_parka_muzhskaya_podrostkovaya_8474430167",
+      "published": "2026-11-28T07:29:34.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8554446562",
+      "title": "Зимний пуховик куртка Supreme x Marmot 800 Fill",
+      "price": 5190,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zimniy_puhovik_kurtka_supreme_x_marmot_800_fill_8554446562",
+      "published": "2026-11-28T07:20:31.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8641733203",
+      "title": "Куртка Reserved женская зимняя",
+      "price": 0,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/kurtka_reserved_zhenskaya_zimnyaya_8641733203",
+      "published": "2026-11-28T07:18:26.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8433868872",
+      "title": "Куртка тёплая женская",
+      "price": 1500,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/kurtka_teplaya_zhenskaya_8433868872",
+      "published": "2026-11-28T07:29:47.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8423909336",
+      "title": "Зимняя куртка Burberry",
+      "price": 4799,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zimnyaya_kurtka_burberry_8423909336",
+      "published": "2026-11-28T07:17:00.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8621058147",
+      "title": "UGG женские обувь магазин",
+      "price": 3299,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/ugg_zhenskie_obuv_magazin_8621058147",
+      "published": "2026-11-28T07:16:40.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8478150484",
+      "title": "Куртка зимняя женская 42 44",
+      "price": 2500,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/kurtka_zimnyaya_zhenskaya_42_44_8478150484",
+      "published": "2026-11-28T07:16:30.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8436055987",
+      "title": "Мужская зимняя куртка кроп",
+      "price": 4395,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_zimnyaya_kurtka_krop_8436055987",
+      "published": "2026-11-28T07:16:30.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8462455072",
+      "title": "Мужская зимняя куртка черная, размер S",
+      "price": 2197,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_zimnyaya_kurtka_chernaya_razmer_s_8462455072",
+      "published": "2026-11-28T07:15:40.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8620817734",
+      "title": "Дублёнка мужская зимня черная Loro Piana",
+      "price": 149999,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/dublenka_muzhskaya_zimnya_chernaya_loro_piana_8620817734",
+      "published": "2026-11-28T07:14:35.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8501037638",
+      "title": "Новая зимняя мужская куртка-пилот Corbona, 50",
+      "price": 8200,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/novaya_zimnyaya_muzhskaya_kurtka-pilot_corbona_50_8501037638",
+      "published": "2026-11-28T07:15:22.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8465732420",
+      "title": "Мужская зимняя куртка с меховым капюшоном",
+      "price": 4395,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/muzhskaya_zimnyaya_kurtka_s_mehovym_kapyushonom_8465732420",
+      "published": "2026-11-28T07:13:24.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8581622068",
+      "title": "Ostin утепленная мужская куртка L",
+      "price": 500,
+      "url": "https://www.avito.ru/moskva/odezhda_obuv_aksessuary/ostin_uteplennaya_muzhskaya_kurtka_l_8581622068",
+      "published": "2026-11-28T07:12:31.000Z",
+      "search_group": "winter_jackets",
+      "search_name": "Зимние куртки",
+      "search_groups": [
+        "winter_jackets"
+      ]
+    },
+    {
+      "id": "8537429187",
+      "title": "Телевизор Panasonic Quintrix F",
+      "price": 2400,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_panasonic_quintrix_f_8537429187",
+      "published": "2026-11-28T07:58:06.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8424223487",
+      "title": "Тв приставка WinkBox mini Запечатанный",
+      "price": 2747,
+      "url": "https://www.avito.ru/moskva/audio_i_video/tv_pristavka_winkbox_mini_zapechatannyy_8424223487",
+      "published": "2026-11-28T07:56:16.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8527392707",
+      "title": "Телевизор Нi RX-43U01FB 43 дюйма SMART TV",
+      "price": 12000,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_ni_rx-43u01fb_43_dyuyma_smart_tv_8527392707",
+      "published": "2026-11-28T07:55:45.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8443555679",
+      "title": "Телевизор TCL 55Q7C QD-Mini LED 144 Гц SMART TV",
+      "price": 56000,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_tcl_55q7c_qd-mini_led_144_gts_smart_tv_8443555679",
+      "published": "2026-11-28T07:56:11.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8579228958",
+      "title": "Музыкальный центр denon RCD-M41 (Black)",
+      "price": 49990,
+      "url": "https://www.avito.ru/moskva/audio_i_video/muzykalnyy_tsentr_denon_rcd-m41_black_8579228958",
+      "published": "2026-11-28T07:50:19.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8621009366",
+      "title": "Музыкальный центр denon RCD-M41 (Silver)",
+      "price": 49990,
+      "url": "https://www.avito.ru/moskva/audio_i_video/muzykalnyy_tsentr_denon_rcd-m41_silver_8621009366",
+      "published": "2026-11-28T07:50:12.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8578732695",
+      "title": "Телевизор Panasonic 32 дюйма",
+      "price": 3000,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_panasonic_32_dyuyma_8578732695",
+      "published": "2026-11-28T07:49:38.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8465528786",
+      "title": "Телевизор TCL 65c735 144hz",
+      "price": 39000,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_tcl_65c735_144hz_8465528786",
+      "published": "2026-11-28T07:47:29.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8500850156",
+      "title": "Apple TV 4k 2026(4th-Gen) Wi-Fi + Ethernet 128GB",
+      "price": 40000,
+      "url": "https://www.avito.ru/moskva/audio_i_video/apple_tv_4k_20264th-gen_wi-fi_ethernet_128gb_8500850156",
+      "published": "2026-11-28T07:47:11.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8640924088",
+      "title": "Телевизор Samsung",
+      "price": 2000,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_samsung_8640924088",
+      "published": "2026-11-28T07:43:12.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8621458524",
+      "title": "43\" Xiaomi SMART TV Wi-Fi",
+      "price": 12000,
+      "url": "https://www.avito.ru/moskva/audio_i_video/43_xiaomi_smart_tv_wi-fi_8621458524",
+      "published": "2026-11-28T07:42:11.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8464935372",
+      "title": "Защитное стекло на тv",
+      "price": 2000,
+      "url": "https://www.avito.ru/moskva/telefony/zaschitnoe_steklo_na_tv_8464935372",
+      "published": "2026-11-28T07:41:41.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8526870853",
+      "title": "Apple TV 4K Gen 4 2026 128GB Wi-Fi Ethernet",
+      "price": 36500,
+      "url": "https://www.avito.ru/moskva/audio_i_video/apple_tv_4k_gen_4_2026_128gb_wi-fi_ethernet_8526870853",
+      "published": "2026-11-28T07:38:21.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8516504031",
+      "title": "Телевизор TCL 55Q6CS QD-Mini LED 60 Гц SMART TV",
+      "price": 41500,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_tcl_55q6cs_qd-mini_led_60_gts_smart_tv_8516504031",
+      "published": "2026-11-28T07:36:12.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8595003078",
+      "title": "Телевизор Sony",
+      "price": 500,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_sony_8595003078",
+      "published": "2026-11-28T07:35:18.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8436571160",
+      "title": "Телевизор 42 дюйма",
+      "price": 2197,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_42_dyuyma_8436571160",
+      "published": "2026-11-28T07:32:50.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8620881111",
+      "title": "Проектор mivo MV-188 для дома, шоурум в Москве",
+      "price": 19000,
+      "url": "https://www.avito.ru/moskva/audio_i_video/proektor_mivo_mv-188_dlya_doma_shourum_v_moskve_8620881111",
+      "published": "2026-11-28T07:27:00.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8474335211",
+      "title": "Yndx 00092 тв станция 34вт",
+      "price": 30000,
+      "url": "https://www.avito.ru/moskva/audio_i_video/yndx_00092_tv_stantsiya_34vt_8474335211",
+      "published": "2026-11-28T07:24:47.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8504801932",
+      "title": "Блок питания E59670 для телевизора LG",
+      "price": 1300,
+      "url": "https://www.avito.ru/moskva/audio_i_video/blok_pitaniya_e59670_dlya_televizora_lg_8504801932",
+      "published": "2026-11-28T07:23:18.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8436315527",
+      "title": "Телевизор LG 42LW575S 3D",
+      "price": 10000,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_lg_42lw575s_3d_8436315527",
+      "published": "2026-11-28T07:23:23.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8464342786",
+      "title": "Кронштейн настенный для тв Vivanco 30664",
+      "price": 1098,
+      "url": "https://www.avito.ru/moskva/audio_i_video/kronshteyn_nastennyy_dlya_tv_vivanco_30664_8464342786",
+      "published": "2026-11-28T07:08:30.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8478435818",
+      "title": "Телевизор bang&olufsen mx8000",
+      "price": 50000,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_bangolufsen_mx8000_8478435818",
+      "published": "2026-11-28T07:07:23.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8504531620",
+      "title": "Большой Samsung 58 дюймов SMART 4k",
+      "price": 24999,
+      "url": "https://www.avito.ru/moskva/audio_i_video/bolshoy_samsung_58_dyuymov_smart_4k_8504531620",
+      "published": "2026-11-28T07:15:51.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8534335184",
+      "title": "Телевизор Skyworth 55SUE9500 qled 4K Android",
+      "price": 47070,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_skyworth_55sue9500_qled_4k_android_8534335184",
+      "published": "2026-11-28T07:00:21.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8474113109",
+      "title": "Телевизор Sony 75 bravia KD-75X80L LED 4K HDR 60",
+      "price": 231360,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_sony_75_bravia_kd-75x80l_led_4k_hdr_60_8474113109",
+      "published": "2026-11-28T07:00:25.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8555154713",
+      "title": "Телевизор Hisense 100L5F 100 4K Ultra HD SMART",
+      "price": 497660,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_hisense_100l5f_100_4k_ultra_hd_smart_8555154713",
+      "published": "2026-11-28T07:00:21.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8581290989",
+      "title": "Телевизор Hyundai qled 65 4K UHD HDR Android TV",
+      "price": 49090,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_hyundai_qled_65_4k_uhd_hdr_android_tv_8581290989",
+      "published": "2026-11-28T07:00:21.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8621222573",
+      "title": "Телевизор LED Starwind 55 4K UHD SMART TV",
+      "price": 39310,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_led_starwind_55_4k_uhd_smart_tv_8621222573",
+      "published": "2026-11-28T07:00:16.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8465040134",
+      "title": "Телевизор Sony 65” bravia XR-65X90L, 4K HDR LED",
+      "price": 182020,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_sony_65_bravia_xr-65x90l_4k_hdr_led_8465040134",
+      "published": "2026-11-28T07:00:15.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8474757410",
+      "title": "Телевизор LED 55 skyworth 55SXE9000 oled 4K SMART",
+      "price": 56550,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_led_55_skyworth_55sxe9000_oled_4k_smart_8474757410",
+      "published": "2026-11-28T07:00:13.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8621269677",
+      "title": "Телевизор skyworth 50Q66G qled 4K 50 Google TV",
+      "price": 35640,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_skyworth_50q66g_qled_4k_50_google_tv_8621269677",
+      "published": "2026-11-28T07:00:02.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8638843058",
+      "title": "Телевизор Hyundai 65 4K UHD SMART TV Android 11",
+      "price": 44860,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_hyundai_65_4k_uhd_smart_tv_android_11_8638843058",
+      "published": "2026-11-28T07:00:03.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8478543480",
+      "title": "Телевизор 55 oled Samsung QE55S85faexru 4K UHD",
+      "price": 128660,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_55_oled_samsung_qe55s85faexru_4k_uhd_8478543480",
+      "published": "2026-11-28T06:59:58.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8443581043",
+      "title": "Телевизор LED Hyundai 55 4K UHD Android TV SMART",
+      "price": 43550,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_led_hyundai_55_4k_uhd_android_tv_smart_8443581043",
+      "published": "2026-11-28T06:59:56.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8443759973",
+      "title": "Телевизор Samsung 85 Neo qled 4K 120 Гц",
+      "price": 233930,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_samsung_85_neo_qled_4k_120_gts_8443759973",
+      "published": "2026-11-28T06:59:55.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8462533138",
+      "title": "Телевизор 55 oled Samsung S95F QE55S95fauxru 2025",
+      "price": 215060,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_55_oled_samsung_s95f_qe55s95fauxru_2025_8462533138",
+      "published": "2026-11-28T06:59:55.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8463963462",
+      "title": "Телевизор Hyundai qled 50 4K UHD Android TV",
+      "price": 29920,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_hyundai_qled_50_4k_uhd_android_tv_8463963462",
+      "published": "2026-11-28T06:59:56.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8579235169",
+      "title": "Телевизор Samsung QE83S85faexru 83 oled 4K UHD",
+      "price": 277870,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_samsung_qe83s85faexru_83_oled_4k_uhd_8579235169",
+      "published": "2026-11-28T06:59:57.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8486228757",
+      "title": "Телевизор LED Hyundai 55 4K UHD SMART TV",
+      "price": 35190,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_led_hyundai_55_4k_uhd_smart_tv_8486228757",
+      "published": "2026-11-28T06:59:56.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8487474187",
+      "title": "Телевизор Samsung 77 oled 4К 120 Гц S85F",
+      "price": 184130,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_samsung_77_oled_4k_120_gts_s85f_8487474187",
+      "published": "2026-11-28T06:59:52.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8567707827",
+      "title": "Телевизор 65 oled Samsung QE65S95fauxru 4K UHD",
+      "price": 264100,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_65_oled_samsung_qe65s95fauxru_4k_uhd_8567707827",
+      "published": "2026-11-28T06:59:55.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8578622899",
+      "title": "Телевизор LED Hyundai 65 4K UHD Android TV 11",
+      "price": 46300,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_led_hyundai_65_4k_uhd_android_tv_11_8578622899",
+      "published": "2026-11-28T06:59:53.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8641629697",
+      "title": "Телевизор 65 oled Samsung QE65S85faexru, 4K UHD",
+      "price": 209180,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_65_oled_samsung_qe65s85faexru_4k_uhd_8641629697",
+      "published": "2026-11-28T06:59:55.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8434287918",
+      "title": "Телевизор Hyundai 55 4K UHD SMART TV Android 11",
+      "price": 35550,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_hyundai_55_4k_uhd_smart_tv_android_11_8434287918",
+      "published": "2026-11-28T06:59:51.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8477962667",
+      "title": "Телевизор Hyundai 75 4K UHD SMART TV Android 11",
+      "price": 88890,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_hyundai_75_4k_uhd_smart_tv_android_11_8477962667",
+      "published": "2026-11-28T06:59:55.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8578002860",
+      "title": "Телевизор oled Hyundai 55 4K UHD SMART TV Android",
+      "price": 89720,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_oled_hyundai_55_4k_uhd_smart_tv_android_8578002860",
+      "published": "2026-11-28T06:59:52.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8500887536",
+      "title": "Профессиональный дисплей LG 75UN640S 75 4K UHD",
+      "price": 252500,
+      "url": "https://www.avito.ru/moskva/audio_i_video/professionalnyy_displey_lg_75un640s_75_4k_uhd_8500887536",
+      "published": "2026-11-28T06:59:52.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8555299471",
+      "title": "Телевизор LED 65 skyworth 65SXE9000 Android 10",
+      "price": 74730,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_led_65_skyworth_65sxe9000_android_10_8555299471",
+      "published": "2026-11-28T06:59:52.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8554201451",
+      "title": "Телевизор LCD SMART TV Rombica QL50 50 qled 4K",
+      "price": 30570,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_lcd_smart_tv_rombica_ql50_50_qled_4k_8554201451",
+      "published": "2026-11-28T06:59:50.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
+    },
+    {
+      "id": "8537170971",
+      "title": "Телевизор Hyundai 65 H-LED65BU7003 4K UHD SMART",
+      "price": 60530,
+      "url": "https://www.avito.ru/moskva/audio_i_video/televizor_hyundai_65_h-led65bu7003_4k_uhd_smart_8537170971",
+      "published": "2026-11-28T06:59:45.000Z",
+      "search_group": "tv",
+      "search_name": "Телевизоры",
+      "search_groups": [
+        "tv"
+      ]
     }
   ]
 }
