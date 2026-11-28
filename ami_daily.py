@@ -8,6 +8,7 @@ from pathlib import Path
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
+from zoneinfo import ZoneInfo
 
 API_URL = "https://api.api.sh/avito/v1/search"
 API_KEY = os.environ.get("AVITO_API_KEY")
@@ -16,43 +17,23 @@ if not API_KEY:
     print("ERROR: AVITO_API_KEY secret is missing.")
     sys.exit(1)
 
-# Пять поисковых запросов.
 SEARCHES = [
-    {
-        "key": "iphone",
-        "name": "iPhone",
-        "q": "iphone",
-        "category": "telefony"
-    },
-    {
-        "key": "laptops",
-        "name": "Ноутбуки",
-        "q": "ноутбук",
-        "category": "noutbuki"
-    },
-    {
-        "key": "sneakers",
-        "name": "Кроссовки",
-        "q": "кроссовки",
-        "category": "odezhda_obuv_aksessuary"
-    },
-    {
-        "key": "winter_jackets",
-        "name": "Зимние куртки",
-        "q": "зимняя куртка",
-        "category": "odezhda_obuv_aksessuary"
-    },
-    {
-        "key": "tv",
-        "name": "Телевизоры",
-        "q": "телевизор",
-        "category": "bytovaya_elektronika"
-    }
+    {"key": "iphone", "name": "iPhone", "q": "iphone",
+     "category": "telefony"},
+    {"key": "laptops", "name": "Ноутбуки", "q": "ноутбук",
+     "category": "noutbuki"},
+    {"key": "sneakers", "name": "Кроссовки", "q": "кроссовки",
+     "category": "odezhda_obuv_aksessuary"},
+    {"key": "winter_jackets", "name": "Зимние куртки",
+     "q": "зимняя куртка",
+     "category": "odezhda_obuv_aksessuary"},
+    {"key": "tv", "name": "Телевизоры", "q": "телевизор",
+     "category": "bytovaya_elektronika"}
 ]
+
 
 def api_request(params):
     url = API_URL + "?" + urlencode(params)
-
     request = Request(
         url,
         headers={
@@ -85,8 +66,7 @@ def api_request(params):
             )
 
             temporary = (
-                error.code == 429
-                or error.code >= 500
+                error.code == 429 or error.code >= 500
                 or "status 429" in detail
             )
 
@@ -145,7 +125,7 @@ def load_history():
     path = Path("data/market-history.json")
 
     if not path.exists():
-        return {"version": 1, "snapshots": []}
+        return {"version": 2, "snapshots": []}
 
     try:
         with path.open("r", encoding="utf-8") as file:
@@ -157,16 +137,17 @@ def load_history():
     except (OSError, json.JSONDecodeError):
         print("WARNING: History file could not be read.")
 
-    return {"version": 1, "snapshots": []}
+    return {"version": 2, "snapshots": []}
 
 
 def main():
     generated_at = datetime.now(timezone.utc).isoformat()
-    today = generated_at[:10]
+    today = datetime.now(
+        ZoneInfo("Europe/Moscow")
+    ).date().isoformat()
 
     all_listings = {}
     search_results = []
-    raw_results = []
 
     for number, search in enumerate(SEARCHES, start=1):
         print(
@@ -225,25 +206,15 @@ def main():
             "ids": sorted(set(ids))
         })
 
-        # В архив попадают только очищенные объявления.
-        raw_results.append({
-            "search": search["name"],
-            "total_found": payload.get("total"),
-            "listings": [
-                clean_listing(item, search)
-                for item in listings
-                if clean_listing(item, search)
-            ]
-        })
-
         print(
             f"Found: {len(listings)}; "
             f"credits: {payload.get('credits_used')}"
         )
 
-        # Небольшая пауза между запросами.
         if number < len(SEARCHES):
             time.sleep(3)
+
+    listings_for_history = list(all_listings.values())
 
     public_result = {
         "generated_at": generated_at,
@@ -255,7 +226,7 @@ def main():
             for x in search_results
         ),
         "count_returned": len(all_listings),
-        "listings": list(all_listings.values())
+        "listings": listings_for_history
     }
 
     Path("data").mkdir(exist_ok=True)
@@ -268,13 +239,15 @@ def main():
             ensure_ascii=False, indent=2
         )
 
-    # Сохраняем историю появления объявлений.
+    # Загружаем прежнюю историю, не удаляя старые записи.
     history = load_history()
 
     snapshot = {
         "date": today,
         "generated_at": generated_at,
-        "searches": search_results
+        "searches": search_results,
+        "count_listings": len(listings_for_history),
+        "listings": listings_for_history
     }
 
     snapshots = [
@@ -283,10 +256,10 @@ def main():
     ]
 
     snapshots.append(snapshot)
+    snapshots.sort(key=lambda x: x.get("date", ""))
 
-    # Храним последние 45 дней.
     history = {
-        "version": 1,
+        "version": 2,
         "updated_at": generated_at,
         "snapshots": snapshots[-45:]
     }
@@ -299,11 +272,11 @@ def main():
             ensure_ascii=False, separators=(",", ":")
         )
 
-    # Резервный архив очищенных результатов.
     archive = {
         "generated_at": generated_at,
-        "searches": raw_results,
-        "count_unique": len(all_listings)
+        "searches": search_results,
+        "count_unique": len(all_listings),
+        "listings": listings_for_history
     }
 
     with open(
@@ -318,6 +291,11 @@ def main():
     print(f"Unique listings: {len(all_listings)}")
     print(f"Searches: {len(SEARCHES)}")
     print(f"History days: {len(history['snapshots'])}")
+    print(
+        "History listings saved: "
+        f"{len(listings_for_history)}"
+    )
+    print("History format: version 2")
 
 
 if __name__ == "__main__":
